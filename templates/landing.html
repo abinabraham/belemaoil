@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% block content %}
+<style type="text/css">
+	.phone-add{
+		    margin: 10px;
+	}
+</style>
+
+			<div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="#">Home</a></li>
+									<li class="active">Welcome</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>Welcome  {% if request.user.first_name %}{{request.user.first_name}} {{request.user.last_name}}{% endif %} !.</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 center">
+							<h2 class="word-rotator-title mb-lg">
+								The New Way to 
+								<strong class="inverted inverted-primary">
+									<span class="word-rotate" data-plugin-options='{"delay": 2000, "animDelay": 300}'>
+										<span class="word-rotate-items">
+											<span>success.</span>
+											<span>advance.</span>
+											<span>progress.</span>
+										</span>
+									</span>				
+								</strong>
+							</h2>
+
+							
+						</div>
+					</div>
+
+					<div class="row">
+					<div class="col-md-4 pull-right">
+							<div class="progress">
+											<div class="progress-bar progress-bar-primary active" data-appear-progress-animation="65%" data-appear-animation-delay="300" style="width: 95%;">
+												<span class="progress-bar-tooltip" style="opacity: 1;">65%</span>
+											</div>
+										</div>
+						</div>
+					<div class="col-md-4 pull-right">
+							<h4>VENDOR ID : <span class="label label-dark">{{vendor_id}}</span></h4>
+						</div>
+						
+						
+					</div>
+					<div class="row">
+				<div class="col-md-12">
+							<div class="tabs tabs-vertical tabs-left">
+								<ul class="nav nav-tabs col-sm-3">
+									
+									<li class="active">
+										<a href="#reval" data-toggle="tab" aria-expanded="true">Revalidation/Registration</a>
+									</li>
+									<li class="">
+										<a href="#contract" data-toggle="tab" aria-expanded="false">Contractor Information</a>
+									</li>
+									<li class="">
+										<a href="#contract2" data-toggle="tab" aria-expanded="false">Contracts Management</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Quality Management</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Standards/Certifications</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Health and Safety</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Company Site Security</a>
+									</li>
+									<hr class="">
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Bank Details</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Naira Account</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Domiciliary Account</a>
+									</li>
+									<hr class="">
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Employees</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Travel Authorization</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Travel My Profile </a>
+									</li>
+
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Purchase Requisition</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Tenders</a>
+									</li>
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Request for Quotation</a>
+									</li>
+
+									<li class="">
+										<a href="#quality" data-toggle="tab" aria-expanded="false">Request for Proposal</a>
+									</li>
+
+
+
+								</ul>
+								<div class="tab-content">
+									<div id="reval" class="tab-pane active">
+										<p>Click on Revalidation / Registration on the left to fill out your form</p>
+										<p>Your Revalidation/Registration form is 0% Complete. Finish filling out your form and click on publish to complete your Revalidation/Registration</p>
+										<p>Click publish when you have finishedd filling out of your form.</p>
+										<p>Your form remains in draft until published.</p>
+										<p>The procurement department will commence work on your Revalidation/Registration after your form has been submitted. </p>
+										<p>You will be unable to edit your form once its published and procurement starts the validation process, however after the Revalidation/Registration is complete, you can edit your profile.</p>
+									</div>
+									<div id="contract" class="tab-pane">
+										<div class="featured-box featured-box-tertiary mt-sm" >
+									<div class="box-content">
+
+<div class="row">
+										<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+										{{form.as_p}}
+
+
+
+
+										{{ phone_formset.management_form }}
+
+									    {% for link_form in phone_formset %}
+									        <div class="link-formset">
+									           Phone Number:  {{ link_form.phonenumber }}
+									            {% if link_form.phonenumber.errors %}
+									                {% for error in link_form.phonenumber.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if phone_formset.non_form_errors %}
+									        {% for error in phone_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+{{ email_formset.management_form }}
+
+									    {% for link_form in email_formset %}
+									        <div class="email_formset">
+									           Email:  {{ link_form.email }}
+									            {% if link_form.email.errors %}
+									                {% for error in link_form.email.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if phone_formset.non_form_errors %}
+									        {% for error in email_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									   {{ website_formset.management_form }}
+
+									    {% for link_form in website_formset %}
+									        <div class="website_formset">
+									           Website:  {{ link_form.website }}
+									            {% if link_form.website.errors %}
+									                {% for error in link_form.website.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if website_formset.non_form_errors %}
+									        {% for error in website_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+									   {{ reg_ofc_formset.management_form }}
+
+									    {% for link_form in reg_ofc_formset %}
+									        <div class="website_formset">
+									           Website:  {{ link_form.address }}
+									            {% if link_form.address.errors %}
+									                {% for error in link_form.address.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if reg_ofc_formset.non_form_errors %}
+									        {% for error in reg_ofc_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+									    
+<div class="col-md-12">
+<button type="submit" class="btn btn-success mr-xs mb-sm">SUBMIT CONTRACT</button>
+</div>
+									    </form>
+									    </div>
+									    </div></div>
+									    </div>											<div class="col-md-12">
+
+
+
+									</div>
+									<div id="contract2" class="tab-pane">
+										
+									</div>
+								</div>
+							</div>
+						</div>
+</div>
+
+
+				</div>
+
+				
+
+				<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="/static/js/jquery.formset.js"></script>
+<script>
+    $('.link-formset').formset({
+        addText: 'Add Phonenumber',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ phone_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+    $('.email_formset').formset({
+        addText: 'Add Email',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ email_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add" ,
+
+        
+    });
+     $('.website_formset').formset({
+        addText: 'Add Website',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ website_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+     $('.reg_ofc_formset').formset({
+        addText: 'Add Address',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ website_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+
+     
+</script>
+				
+				{% endblock %}

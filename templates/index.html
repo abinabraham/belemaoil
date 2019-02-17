@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+			<div role="main" class="main">
+				<section class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="breadcrumb">
+									<li><a href="#">Home</a></li>
+									<!-- <li class="active">Pages</li> -->
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h1>Welcome to the Belemaoil Portal</h1>
+							</div>
+						</div>
+					</div>
+				</section>
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="owl-carousel owl-theme mb-none" data-plugin-options='{"items": 1, "animateOut": "fadeOut", "autoplay": true, "autoplayTimeout": 3000}'>
+								<div>
+									<img alt="" class="img-responsive img-rounded" src="/static/img/BPL-Slider-22.png">
+								</div>
+								<div>
+									<img alt="" class="img-responsive img-rounded" src="/static/img/PA6-1.jpg">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<hr class="tall">
+
+					<div class="row">
+						<div class="col-md-7">
+							<h2>Belemaoil Portal an automated electronic <strong>one-stop transaction centre</strong></h2>
+							<p class="lead">that improves on value procurement in th oil and gas industry and institutionalize world-class contracting processes in Nigeria</p>
+
+							<p>Belemaoil Portal an automated procurement platform. It is a virtual community and collaborative environment that delivers significant value to all Stakeholders.</p>
+							<p><u>Steps for vendor Revalidation/Registration</u></p>
+
+							<div class="row mt-xlg mb-xl">
+								<div class="col-md-12">
+									<div class="feature-box feature-box-style-2">
+										<div class="feature-box-icon">
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="feature-box-info">
+											<h4 class="heading-primary mb-xs">Register With Belemaoil Portal</h4>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="feature-box feature-box-style-2">
+										<div class="feature-box-icon">
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="feature-box-info">
+											<h4 class="heading-primary mb-xs">Login With Username and Password</h4>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="feature-box feature-box-style-2">
+										<div class="feature-box-icon">
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="feature-box-info">
+											<h4 class="heading-primary mb-xs">Fill Company Information Form in Login Area</h4>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<hr class="tall">
+
+							
+
+						</div>
+
+						<div class="col-sm-5">
+										<div class="featured-box featured-box-primary align-left mt-xlg" style="height: 327px;">
+											<div class="box-content">
+												<h4 class="heading-primary text-uppercase mb-md">I'm a Returning Customer</h4>
+											{% if form.non_field_errors %}
+											<div class="alert alert-danger">
+											{% for error in form.non_field_errors %}
+										<strong>Oops!</strong> {{error}}
+										{% endfor %}
+									</div>
+									{% endif %}
+												<form action="." id="frmSignIn" method="post">{% csrf_token %}
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>Username</label>
+																{{form.username}}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<a class="pull-right" href="#">(Lost Password?)</a>
+																<label>Password</label>
+																{{form.password}}
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<span class="remember-box checkbox">
+																<label for="rememberme">
+																	<input type="checkbox" id="rememberme" name="rememberme">Remember Me
+																</label>
+															</span>
+														</div>
+														<div class="col-md-6">
+															<input type="submit" value="Login" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+
+
+										<ul class="list list-icons list-icons-style-3 mt-xlg">
+								<li><i class="fa fa-map-marker"></i> <strong>Address:</strong>  1 Belemaoil Way, Off Peter Odili Road, Trans-Amadi Industrial Area, Port Harcourt, Rivers State, Nigeria</li>
+								<li><i class="fa fa-phone"></i> <strong>Phone:</strong> +234 (0) 8118898887, +234 (0) 80118898390 +234 (0) 8118894680, +234 (0) 8118894681</li>
+								<li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">enquiries@belemaoil.com, info@belemaoil.com, support@belemaoil.com</a></li>
+							</ul>
+
+							<hr>
+
+							
+									</div>
+					</div>
+
+				</div>
+
+			</div>
+{% endblock %}
