@@ -121,15 +121,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 
+location = lambda x: os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), x)
+MEDIA_ROOT = location("media")
+#MEDIA_ROOT = '/media/'
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash if there is a path component (optional in other cases).
+# Examples: "http://media.lawrence.com", "http://example.com/media/"
+MEDIA_URL = '/media/'
+
+# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
+# trailing slash.
+# Examples: "http://foo.com/media/", "/media/".
+#ADMIN_MEDIA_PREFIX = '/media/admin/'
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(SUPER_DIR,"static")
+#STATIC_ROOT = '/static/'
+STATIC_ROOT = location('static')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'static'),
+    location('static/'),
 )
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-MEDIA_URL = "/media/"
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/index/"
