@@ -136,8 +136,8 @@ MEDIA_URL = '/media/'
 #ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 STATIC_URL = '/static/'
-#STATIC_ROOT = '/static/'
-STATIC_ROOT = location('static')
+STATIC_ROOT = '/static/'
+# STATIC_ROOT = location('static')
 STATICFILES_DIRS = (
     location('static/'),
 )
