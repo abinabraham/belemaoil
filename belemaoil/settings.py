@@ -141,3 +141,39 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'testmail4developer@gmail.com'
 EMAIL_HOST_PASSWORD = 'test974!'
 EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = "no_reply@belemaoil,com"
+
+
+LOGGING = {
+     'version': 1,
+     'disable_existing_loggers': False,
+     'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+     },
+     'handlers': {
+         'file': {
+             'level': 'DEBUG',
+             'class': 'logging.FileHandler',
+             'filename': 'belemaoil.log',
+         },
+      'mail_admins': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            #'email_backend': 'django_ses.SESBackend',# Your email backend
+        }
+     },
+     'loggers': {
+         'django.request': {
+             'handlers': ['file', 'mail_admins'],
+             'level': 'DEBUG',
+             'propagate': True,
+         },
+     },
+}
+
+ADMINS = [('Abin Abraham', 'abinabrahamcs@gmail.com')]
+EMAIL_SUBJECT_PREFIX = '[Horizon - API] '
+SERVER_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')

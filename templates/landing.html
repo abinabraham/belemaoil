@@ -20,7 +20,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<h1>Welcome  {% if request.user.first_name %}{{request.user.first_name}} {{request.user.last_name}}{% endif %} !.</h1>
+								<h1>Welcome  {% if data_ob.company %}{{data_ob.company}} {% endif %} !.</h1>
 							</div>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 										</div>
 						</div>
 					<div class="col-md-4 pull-right">
-							<h4>VENDOR ID : <span class="label label-dark">{{vendor_id}}</span></h4>
+							<h4>VENDOR ID : <span class="label label-dark">{{data_ob.vendor}}</span></h4>
 						</div>
 						
 						
@@ -212,8 +212,8 @@
 									   {{ reg_ofc_formset.management_form }}
 
 									    {% for link_form in reg_ofc_formset %}
-									        <div class="website_formset">
-									           Website:  {{ link_form.address }}
+									        <div class="reg_ofc_formset">
+									           Address:  {{ link_form.address }}
 									            {% if link_form.address.errors %}
 									                {% for error in link_form.address.errors %}
 									                    {{ error|escape }}
@@ -230,8 +230,490 @@
 									        {% endfor %}
 									    {% endif %}
 
+									     {{ principal_formset.management_form }}
 
+									    {% for link_form in principal_formset %}
+									        <div class="principal_formset">
+									           Principal Owners:  {{ link_form.partner }}
+									            {% if link_form.partner.errors %}
+									                {% for error in link_form.partner.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if principal_formset.non_form_errors %}
+									        {% for error in principal_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ dir_formset.management_form }}
+
+									    {% for link_form in dir_formset %}
+									        <div class="dir_formset">
+									           Director Name:  {{ link_form.dir_name }}
+									            {% if link_form.dir_name.errors %}
+									                {% for error in link_form.dir_name.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									           Director Nationality:  {{ link_form.dir_nationality}}
+									            {% if link_form.dir_nationality.errors %}
+									                {% for error in link_form.dir_nationality.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if dir_formset.non_form_errors %}
+									        {% for error in dir_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ work_performance_formset.management_form }}
+
+									    {% for link_form in work_performance_formset %}
+									        <div class="work_performance_formset">
+									           Client Execution Date:  {{ link_form.client_exectn_date }}
+									            {% if link_form.client_exectn_date.errors %}
+									                {% for error in link_form.client_exectn_date.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									           Location:  {{ link_form.location}}
+									            {% if link_form.location.errors %}
+									                {% for error in link_form.location.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            Total Value of Contract:  {{ link_form.total_value_contract }}
+									            {% if link_form.total_value_contract.errors %}
+									                {% for error in link_form.total_value_contract.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									           Client Contact Person:  {{ link_form.client_contact_person}}
+									            {% if link_form.client_contact_person.errors %}
+									                {% for error in link_form.client_contact_person.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            Job Completion Certificate:  {{link_form.job_compltn_certificate}}
+									            {% if link_form.job_compltn_certificate.errors %}
+									                {% for error in link_form.job_compltn_certificate.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if work_performance_formset.non_form_errors %}
+									        {% for error in work_performance_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+									     {{ contact_formset.management_form }}
+
+									    {% for link_form in contact_formset %}
+									        <div class="contact_formset">
+									           Name:  {{ link_form.name }}
+									            {% if link_form.name.errors %}
+									                {% for error in link_form.name.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									           Email:  {{ link_form.email}}
+									            {% if link_form.email.errors %}
+									                {% for error in link_form.email.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									           Phone Number:  {{ link_form.phone }}
+									            {% if link_form.phone.errors %}
+									                {% for error in link_form.phone.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									           Designation:  {{ link_form.designation}}
+									            {% if link_form.designation.errors %}
+									                {% for error in link_form.designation.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									        </div>
+									    {% endfor %}
+
+									    {% if contact_formset.non_form_errors %}
+									        {% for error in contact_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									      {{ certfct_incorprtn.management_form }}
+
+									    {% for link_form in certfct_incorprtn %}
+									        <div class="certfct_incorprtn">
+									           Certificate of Incorporation:  {{ link_form.certi_file }}
+									            {% if link_form.certi_file.errors %}
+									                {% for error in link_form.certi_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if certfct_incorprtn.non_form_errors %}
+									        {% for error in certfct_incorprtn.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ cmpny_profile_file.management_form }}
+
+									    {% for link_form in cmpny_profile_file %}
+									        <div class="cmpny_profile_file">
+									           Company Profile:  {{ link_form.company_profile_file }}
+									            {% if link_form.company_profile_file.errors %}
+									                {% for error in link_form.company_profile_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if cmpny_profile_file.non_form_errors %}
+									        {% for error in cmpny_profile_file.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ orgnztn_chart_formset.management_form }}
+
+									    {% for link_form in orgnztn_chart_formset %}
+									        <div class="orgnztn_chart_formset">
+									           Organization Chart of Key Personnel:  {{ link_form.orgnztn_chart_file }}
+									            {% if link_form.orgnztn_chart_file.errors %}
+									                {% for error in link_form.orgnztn_chart_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if orgnztn_chart_formset.non_form_errors %}
+									        {% for error in orgnztn_chart_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ past_project_formset.management_form }}
+
+									    {% for link_form in past_project_formset %}
+									        <div class="past_project_formset">
+									           Pasat Projects(2 years):  {{ link_form.pjt_file }}
+									            {% if link_form.pjt_file.errors %}
+									                {% for error in link_form.pjt_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if past_project_formset.non_form_errors %}
+									        {% for error in past_project_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+									    {{ formco2_formset.management_form }}
+
+									    {% for link_form in formco2_formset %}
+									        <div class="formco2_formset">
+									           FormCO2:  {{ link_form.co2_file }}
+									            {% if link_form.co2_file.errors %}
+									                {% for error in link_form.co2_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if formco2_formset.non_form_errors %}
+									        {% for error in formco2_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ formco7_formset.management_form }}
+
+									    {% for link_form in formco7_formset %}
+									        <div class="formco7_formset">
+									           FormCO7:  {{ link_form.co7_file }}
+									            {% if link_form.co7_file.errors %}
+									                {% for error in link_form.co7_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if formco7_formset.non_form_errors %}
+									        {% for error in formco7_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ form_co10_formset.management_form }}
+
+									    {% for link_form in form_co10_formset %}
+									        <div class="form_co10_formset">
+									           FormCO10:  {{ link_form.c010_file }}
+									            {% if link_form.c010_file.errors %}
+									                {% for error in link_form.c010_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if form_co10_formset.non_form_errors %}
+									        {% for error in form_co10_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
 									    
+									    {{ dpr_formset.management_form }}
+
+									    {% for link_form in dpr_formset %}
+									        <div class="dpr_formset">
+									           Department of Petroleum Resources (DPR) Certificate: {{ link_form.dpr_certi }}
+									            {% if link_form.dpr_certi.errors %}
+									                {% for error in link_form.dpr_certi.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if dpr_formset.non_form_errors %}
+									        {% for error in dpr_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ audit_formset.management_form }}
+
+									    {% for link_form in audit_formset %}
+									        <div class="audit_formset">
+									           Audited Accounts Or Statement of Affairs: {{ link_form.acc_file }}
+									            {% if link_form.acc_file.errors %}
+									                {% for error in link_form.acc_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if audit_formset.non_form_errors %}
+									        {% for error in audit_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ vat_formset.management_form }}
+
+									    {% for link_form in vat_formset %}
+									        <div class="vat_formset">
+									           VAT Certificate of Registration: {{ link_form.certificate }}
+									            {% if link_form.certificate.errors %}
+									                {% for error in link_form.certificate.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if vat_formset.non_form_errors %}
+									        {% for error in vat_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ tax_formset.management_form }}
+
+									    {% for link_form in tax_formset %}
+									        <div class="tax_formset">
+									           Company Tax Clearance Certificate (3 Years): {{ link_form.tax_certifct }}
+									            {% if link_form.tax_certifct.errors %}
+									                {% for error in link_form.tax_certifct.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if tax_formset.non_form_errors %}
+									        {% for error in tax_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+									    {{ wcic_formset.management_form }}
+
+									    {% for link_form in wcic_formset %}
+									        <div class="wcic_formset">
+									          Workmen's Compensation Insurance Certificate: {{ link_form.wcic_file }}
+									            {% if link_form.wcic_file.errors %}
+									                {% for error in link_form.wcic_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if QMS_formset.non_form_errors %}
+									        {% for error in wcic_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+									    {{ wcic_formset.management_form }}
+
+									    {% for link_form in wcic_formset %}
+									        <div class="wcic_formset">
+									          Workmen's Compensation Insurance Certificate: {{ link_form.wcic_file }}
+									            {% if link_form.wcic_file.errors %}
+									                {% for error in link_form.wcic_file.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if wcic_formset.non_form_errors %}
+									        {% for error in wcic_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+
+
+
+
+									    {{ cmpny_profile_formset.management_form }}
+
+									    {% for link_form in cmpny_profile_formset %}
+									        <div class="cmpny_profile_formset">
+									          No:of Months/Years in Business: {{ link_form.duration }}
+									            {% if link_form.duration.errors %}
+									                {% for error in link_form.duration.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									         Overall No:of Staff: {{ link_form.no_of_staff }}
+									            {% if link_form.no_of_staff.errors %}
+									                {% for error in link_form.no_of_staff.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									        Does your company belongs to any group of companies : {{ link_form.associated_status }}
+									            {% if link_form.associated_status.errors %}
+									                {% for error in link_form.associated_status.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									        If YES state name of the Company/Organization: {{ link_form.associated_company }}
+									            {% if link_form.associated_company.errors %}
+									                {% for error in link_form.associated_company.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									         Attached Related Documents: {{ link_form.documents }}
+									            {% if link_form.documents.errors %}
+									                {% for error in link_form.documents.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									         Does your Company have several Machinary/Plants: {{ link_form.machinary_plants_status }}
+									            {% if link_form.machinary_plants_status.errors %}
+									                {% for error in link_form.machinary_plants_status.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+									         Does your Company have any Subsidiaries: {{ link_form.subsidiary_status }}
+									            {% if link_form.subsidiary_status.errors %}
+									                {% for error in link_form.subsidiary_status.errors %}
+									                    {{ error|escape }}
+									                {% endfor %}
+									            {% endif %}
+
+									            
+									        </div>
+									    {% endfor %}
+
+									    {% if cmpny_profile_formset.non_form_errors %}
+									        {% for error in cmpny_profile_formset.non_form_errors %}
+									            {{ error|escape }}
+									        {% endfor %}
+									    {% endif %}
+<div class="col-md-12">
+
+
+
+
+
 <div class="col-md-12">
 <button type="submit" class="btn btn-success mr-xs mb-sm">SUBMIT CONTRACT</button>
 </div>
@@ -252,6 +734,7 @@
 </div>
 
 
+				</div>
 				</div>
 
 				
@@ -293,7 +776,29 @@
         addText: 'Add Address',
         deleteText: 'Remove',
         deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
-        prefix: "{{ website_formset.prefix }}",
+        prefix: "{{ reg_ofc_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+     $('.principal_formset').formset({
+        addText: 'Add Principal Owners / Partners',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ principal_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+     $('.dir_formset').formset({
+        addText: 'Add Director ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ dir_formset.prefix }}",
         formCssClass: 'inline-form',
         addCssClass: "btn btn-default mr-xs mb-sm phone-add",
 
@@ -301,6 +806,164 @@
     });
 
 
+     $('.work_performance_formset').formset({
+        addText: 'Add Work Performance History ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ work_performance_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+
+     $('.contact_formset').formset({
+        addText: 'Add Contact Person ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ contact_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+     $('.certfct_incorprtn').formset({
+        addText: 'Add Certificate ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ certfct_incorprtn.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+    });
+
+     $('.cmpny_profile_file').formset({
+        addText: 'Add Certificate ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ cmpny_profile_file.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+      $('.orgnztn_chart_formset').formset({
+        addText: 'Add Organization Chart ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ orgnztn_chart_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+ $('.past_project_formset').formset({
+        addText: 'Add Past-Projects ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ past_project_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+ $('.formco2_formset').formset({
+        addText: 'Add FormCO2 ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ formco2_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+ $('.formco7_formset').formset({
+        addText: 'Add FormCO7 ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ formco7_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+ $('.form_co10_formset').formset({
+        addText: 'Add FormCO10 ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ form_co10_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+$('.dpr_formset').formset({
+        addText: 'Add DPR Certificate ',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ dpr_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+$('.audit_formset').formset({
+        addText: 'Add Audited Accounts',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ audit_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+	
+$('.vat_formset').formset({
+        addText: 'Add VAT Certificate',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ vat_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+$('.tax_formset').formset({
+        addText: 'Add Company Tax',
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ tax_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+
+$('.wcic_formset').formset({
+        addText: "Add Workmen's Insurance Certificate",
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ wcic_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+$('.cmpny_profile_formset').formset({
+        addText: "Add Company Profile",
+        deleteText: 'Remove',
+        deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
+        prefix: "{{ cmpny_profile_formset.prefix }}",
+        formCssClass: 'inline-form',
+        addCssClass: "btn btn-default mr-xs mb-sm phone-add",
+
+        
+    });
+     
      
 </script>
 				

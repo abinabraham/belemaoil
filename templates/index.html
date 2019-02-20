@@ -20,7 +20,7 @@
 				</section>
 				<div class="container">
 
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-12">
 							<div class="owl-carousel owl-theme mb-none" data-plugin-options='{"items": 1, "animateOut": "fadeOut", "autoplay": true, "autoplayTimeout": 3000}'>
 								<div>
@@ -31,9 +31,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<hr class="tall">
+					<!-- <hr class="tall"> -->
 
 					<div class="row">
 						<div class="col-md-7">
@@ -84,6 +84,7 @@
 						</div>
 
 						<div class="col-sm-5">
+						{% if not request.user.is_authenticated %}
 										<div class="featured-box featured-box-primary align-left mt-xlg" style="height: 327px;">
 											<div class="box-content">
 												<h4 class="heading-primary text-uppercase mb-md">I'm a Returning Customer</h4>
@@ -119,14 +120,19 @@
 																	<input type="checkbox" id="rememberme" name="rememberme">Remember Me
 																</label>
 															</span>
+															<a href="/register"><span class="label label-lg label-primary">Register</span></a>
 														</div>
 														<div class="col-md-6">
 															<input type="submit" value="Login" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
 														</div>
+
 													</div>
 												</form>
 											</div>
 										</div>
+										{% else %}
+										<a  href="/index" class="btn btn-borders btn-secondary mr-xs mb-sm">Return to Dashboard</a>
+										{% endif %}
 
 
 										<ul class="list list-icons list-icons-style-3 mt-xlg">
