@@ -335,7 +335,10 @@ class NewRegistration(FormView):
                                     'pwd':raw_password,
                                 }
                             )
-            send_mail('Thank you for registration !', 'message', settings.DEFAULT_FROM_EMAIL, [email],fail_silently=True,html_message=html_message)
+            try:
+                send_mail('Thank you for registration !', 'message', settings.DEFAULT_FROM_EMAIL, [email],fail_silently=True,html_message=html_message)
+            except Exception as e:
+                print "+++++++++++e",e
             # email.send()
             username = usr_form.cleaned_data.get('email')
             
