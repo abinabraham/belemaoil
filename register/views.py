@@ -335,11 +335,14 @@ class NewRegistration(FormView):
                                     'pwd':raw_password,
                                 }
                             )
+            subject = 'Thank you for registering'
+            message = 'Thank you for registering'
+            email_from = "Belemaoil <no_reply@belemaoil.com >"
+            recipient_list = [email]
             try:
-                send_mail('Thank you for registration !', 'message', settings.DEFAULT_FROM_EMAIL, [email],fail_silently=True,html_message=html_message)
+                send_mail(subject, message, email_from, recipient_list,fail_silently=False,html_message=html_message)
             except Exception as e:
                 print "+++++++++++e",e
-            # email.send()
             username = usr_form.cleaned_data.get('email')
             
             # user = authenticate(username=username, password=raw_password)
@@ -360,10 +363,11 @@ class NewRegistration(FormView):
 
 class SaveContactDetails(View):
     def post(self,request):
+        print("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
         name = request.POST.get('name')
         email = request.POST.get('email')
         subjt = request.POST.get('subject')
-        message = request.POST.get('mesg')
+        message = request.POST.get('message')
         # print("ttttttttttttt",subjt,type(subjt))
         # if subjt=='0' and subjt=='1' :
         #     print("first>...................")
@@ -374,6 +378,6 @@ class SaveContactDetails(View):
         # else:
         #     print("ttttttttttttttt")
         #     subjt = 'I Would Like To Suggest'
-        print("in viewwwwwwwwwwwwwwwwwwwww",name,email,subjt,msg)
+        # print("in viewwwwwwwwwwwwwwwwwwwww",name,email,subjt,msg)
         contct_obj = ContactDetailsModel.objects.create(name=name,email=email,subject=subjt,message=message)
         return HttpResponse(json.dumps('success'), content_type='json')

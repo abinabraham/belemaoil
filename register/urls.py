@@ -27,7 +27,7 @@ urlpatterns = [
 
     url(r'register/$',NewRegistration.as_view(), name='register'),
     url(r'contact/$',ContactUsView.as_view(), name='contacts'),
-    url(r'contact/save/$',SaveContactDetails.as_view(), name='savecontact'),
+    url(r'^save/contact/',SaveContactDetails.as_view(), name='savecontact'),
 
 
 

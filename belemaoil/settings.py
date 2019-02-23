@@ -135,13 +135,21 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = "/index/"
 # LOGOUT_REDIRECT_URL = '/login/'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER =  'apikey'
+# EMAIL_HOST_PASSWORD = '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'
+# DEFAULT_FROM_EMAIL = "Belemaoil <no_reply@belemaoil,com >"
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'testmail4developer@gmail.com'
 EMAIL_HOST_PASSWORD = 'test974!'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = "no_reply@belemaoil,com"
+DEFAULT_FROM_EMAIL = "Belemaoil <no_reply@belemaoil.com >"
 
 
 # LOGGING = {

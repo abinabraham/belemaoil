@@ -41,7 +41,8 @@
 							</div>
 
 							<h2 class="mb-sm mt-sm"><strong>Contact</strong> Us</h2>
-							<form id="contactForm" action="" method="POST">{% csrf_token %}
+							<form id="contactForm" action="." method="POST">
+							{% csrf_token %}
 								<div class="row">
 									<div class="form-group">
 										<div class="col-md-6">
@@ -134,12 +135,12 @@
 
         $('#new_cntct').click(function()
         {
-            var cntct_name = $('#cntct_name').val();
-            var cntct_email = $('#cntct_email').val();
-            var cntct_subjct = $('#cntct_subject').val();
-            var cntct_mobile = $('#cntct_mobile').val();
-            // alert(cntct_subjct);
-            if(cntct_name == "" || cntct_email == "" || cntct_subjct == "" ||  cntct_mobile == "")
+            var cntct_name = $('#name').val();
+            var cntct_email = $('#email').val();
+            var cntct_subjct = $('#subject').val();
+            var cntct_message = $('#message').val();
+            alert(cntct_subjct);
+            if(cntct_name == "" || cntct_email == "" || cntct_subjct == "" ||  cntct_message == "")
             {
                 $(".alert").addClass("alert-warning").html("<strong>Warning! </strong> All fields are mandatory!.").fadeIn(300).fadeOut(6000);
             }
@@ -147,9 +148,9 @@
             {
 
                 var ajaxRequest= $.ajax({
-                    'url': '/general/contact/',
+                    'url': '/save/contact/',
                     'type': 'POST',
-                    'data': {csrfmiddlewaretoken: '{{ csrf_token }}',name:cntct_name,email:cntct_email,subject:cntct_subjct,mob_no:cntct_mobile},
+                    'data': {csrfmiddlewaretoken: '{{ csrf_token }}',name:cntct_name,email:cntct_email,subject:cntct_subjct,message:cntct_message},
                     'dataType': 'json',
                     'async':false,
                 });
@@ -165,7 +166,9 @@
                 });
             }
 
-        });	});
+        });
+
+   	});
 
 
 
