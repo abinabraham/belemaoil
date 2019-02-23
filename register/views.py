@@ -342,7 +342,7 @@ class NewRegistration(FormView):
             try:
                 send_mail(subject, message, email_from, recipient_list,fail_silently=False,html_message=html_message)
             except Exception as e:
-                print "+++++++++++e",e
+                raise Exception('{}'.format(e))
             username = usr_form.cleaned_data.get('email')
             
             # user = authenticate(username=username, password=raw_password)
