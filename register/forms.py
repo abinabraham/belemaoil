@@ -83,6 +83,15 @@ from models import *
 
 
 class ContractorModelForm(ModelForm):
+    SERVICE_CATGRY_CHOICES = (
+      ('Equipment Lease', 'Equipment Lease'),
+      ('Oil Tools', 'Oil Tools'),
+      ('Technology', 'Technology'),
+      ('Oil Well Servicing', 'Oil Well Servicing'),
+
+    )
+    service_catgry =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
+                                             choices=SERVICE_CATGRY_CHOICES)
     class Meta:
         model = ContractorModel
         exclude = ('user','submission_date')
@@ -293,6 +302,37 @@ class WCICForm(ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
+class RefLetterForm(ModelForm):
+    class Meta:
+        model = RefLetter
+        fields = ['ref_file']
+
+    def __init__(self, *args, **kwargs):
+        super(RefLetterForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+class NPLAppForm(ModelForm):
+    class Meta:
+        model = NPLApp
+        fields = ['npl']
+
+    def __init__(self, *args, **kwargs):
+        super(NPLAppForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+class CurrentITFForm(ModelForm):
+    class Meta:
+        model = CurrentITF
+        fields = ['citf']
+
+    def __init__(self, *args, **kwargs):
+        super(CurrentITFForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+
 class CompanyProfileForm(ModelForm):
     class Meta:
         model = CompanyProfile
@@ -302,6 +342,40 @@ class CompanyProfileForm(ModelForm):
         super(CompanyProfileForm, self).__init__(*args, **kwargs)       
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
+
+
+  
+class HealthSafetyForm(ModelForm):
+    class Meta:
+        model = HealthCertificates
+        fields = ['cert']
+
+    def __init__(self, *args, **kwargs):
+        super(HealthSafetyForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+class HealthPolicyForm(ModelForm):
+    class Meta:
+        model = HealthPolicy
+        fields = ['policy']
+
+    def __init__(self, *args, **kwargs):
+        super(HealthPolicyForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+class OtherDocForm(ModelForm):
+    class Meta:
+        model = OtherDoc
+        fields = ['doc']
+
+    def __init__(self, *args, **kwargs):
+        super(OtherDocForm, self).__init__(*args, **kwargs)       
+        for field in self.fields:
+            self.fields[field].widget.attrs['class']='form-control input-sm'
+
+
 
 class QMSForm(ModelForm):
     class Meta:
@@ -352,4 +426,15 @@ VATCertificateFormSet =  inlineformset_factory(ContractorModel,VATCertificate,fo
 CompanyTaxFormSet =  inlineformset_factory(ContractorModel,CompanyTax,form=CompanyTaxForm, extra=1)
 WCICFormSet =  inlineformset_factory(ContractorModel,WCIC,form=WCICForm, extra=1)
 CompanyProfileFormSet =  inlineformset_factory(ContractorModel,CompanyProfile,form=CompanyProfileForm, extra=1)
-QMSFormSet =  inlineformset_factory(ContractorModel,QMS,form=QMSForm, extra=1)
+QMS_formset =  inlineformset_factory(ContractorModel,QMS,form=QMSForm, extra=1)
+
+
+RefLetterFormSet =  inlineformset_factory(ContractorModel,RefLetter,form=RefLetterForm, extra=1)
+NPLAppFormSet =  inlineformset_factory(ContractorModel,NPLApp,form=NPLAppForm, extra=1)
+CurrentITFFormSet =  inlineformset_factory(ContractorModel,CurrentITF,form=CurrentITFForm, extra=1)
+HealthPolicyFormSet =  inlineformset_factory(ContractorModel,HealthPolicy,form=HealthPolicyForm, extra=1)
+HealthSafetyFormFormSet =  inlineformset_factory(ContractorModel,HealthCertificates,form=HealthSafetyForm, extra=1)
+OtherDocFormFormSet =  inlineformset_factory(ContractorModel,OtherDoc,form=OtherDocForm, extra=1)
+
+
+

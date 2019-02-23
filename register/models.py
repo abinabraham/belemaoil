@@ -74,8 +74,9 @@ class ContractorModel(models.Model):
     estimate_time = models.CharField(max_length=50,null=False,blank=False)
     state_origin = models.ForeignKey(StatesMaster,null=False, blank=False)
     submission_date = models.DateTimeField(auto_now=True)
-    signature = models.FileField(upload_to='media/contrator/files')
+    signature = models.FileField(upload_to='media/contrator/files', null=True, blank= True)
     # service_catgry =  models.CharField(max_length=45,choices=SERVICE_CATGRY_CHOICES)
+
 
 
     def __str__(self):
@@ -136,7 +137,7 @@ class DirectorDetails(models.Model):
 
 
 class WorkPerformanceDetails(models.Model):
-    # client_name = models.CharField(max_length=45,null=False, blank=False)
+    client_name = models.CharField(max_length=45,null=False, blank=False)
     client_exectn_date = models.DateField(null=False, blank=False)
     location = models.CharField(max_length=75,null=False, blank=False)
     total_value_contract = models.IntegerField(null=False,blank=False)
@@ -145,7 +146,7 @@ class WorkPerformanceDetails(models.Model):
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return self.client_name
 
 
 
@@ -165,14 +166,15 @@ class CertificateIncorporation(models.Model):
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class CompanyProfileFile(models.Model):
     company_profile_file = models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 
 class OrganizationChart(models.Model):
@@ -180,70 +182,104 @@ class OrganizationChart(models.Model):
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class PastProjects(models.Model):
     pjt_file = models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class FormCO2(models.Model):
     co2_file = models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class FormCO7(models.Model):
     co7_file = models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class FormCO10(models.Model):
     c010_file = models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class DPRCertificate(models.Model):
     dpr_certi= models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class AuditAccount(models.Model):
     acc_file= models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class VATCertificate(models.Model):
     certificate= models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class CompanyTax(models.Model):
     tax_certifct= models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
 
 class WCIC(models.Model):
     wcic_file= models.FileField(upload_to='media/contrator/files')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+
+class RefLetter(models.Model):
+    ref_file= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class CurrentITF(models.Model):
+    citf= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class NPLApp(models.Model):
+    npl= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
 
 
 class QMS(models.Model):
@@ -251,7 +287,33 @@ class QMS(models.Model):
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+
+class HealthPolicy(models.Model):
+    policy= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
+
+class HealthCertificates(models.Model):
+    cert= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
+
+class OtherDoc(models.Model):
+    doc= models.FileField(upload_to='media/contrator/files')
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+
+    def __str__(self):
+        return str(self.id)
+
 
 
 class CompanyProfile(models.Model):

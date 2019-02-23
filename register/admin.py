@@ -34,6 +34,15 @@ admin.site.register(WCIC)
 admin.site.register(CompanyProfile)
 admin.site.register(QMS)
 admin.site.register(CountryCodeMaster)
+admin.site.register(RefLetter)
+admin.site.register(NPLApp)
+admin.site.register(CurrentITF)
+admin.site.register(HealthPolicy)
+admin.site.register(HealthCertificates)
+admin.site.register(OtherDoc)
+admin.site.register(StatesMaster)
+
+
 
 
 
