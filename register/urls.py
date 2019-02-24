@@ -26,16 +26,13 @@ from views import NewRegistration,ContactUsView,SaveContactDetails
 urlpatterns = [
 
     url(r'register/$',NewRegistration.as_view(), name='register'),
+    # url(r'/ajax/contract-service-sumbit/$',ContractServiceSubmit.as_view(), name='contractservices'),  
+
+    
     url(r'contact/$',ContactUsView.as_view(), name='contacts'),
     url(r'^save/contact/',SaveContactDetails.as_view(), name='savecontact'),
 
 
 
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-admin.site.site_header = 'BELEMAOIL ADMIN DASHBOARD'
+]
 

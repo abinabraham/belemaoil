@@ -31,6 +31,7 @@ from register.views import LandingPageView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('register.urls')),
+    url(r'^services/', include('services.urls')),
     url(r'^$', auth_views.login, {'template_name': 'index.html','authentication_form': LoginForm}, name="index"),
 
     url(r'^login/$', auth_views.login, {'template_name': 'login.html','authentication_form': LoginForm}, name='login'),

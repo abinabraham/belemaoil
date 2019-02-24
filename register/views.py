@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.template import loader
 from random import randint
@@ -24,6 +24,7 @@ from forms import *
 from django.conf import settings
 from django.views import generic
 from binascii import a2b_base64
+from services.forms import *
 
 from django.core.files.base import ContentFile
 
@@ -38,6 +39,9 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 
 class LandingPageView(generic.FormView):
     form_class = ContractorModelForm
+    general_form = GeneralPurposeForm
+    category_form = MajorCategoryForm   
+    
     template_name = 'landing.html'
     success_url = '/index/'
     model = ContractorModel
@@ -73,6 +77,8 @@ class LandingPageView(generic.FormView):
     other_formset = OtherDocFormFormSet        
     QMS_formset = QMS_formset
     cmpny_profile_formset = CompanyProfileFormSet
+
+
 
     def __init__(self, *args, **kwargs):
         super(LandingPageView, self).__init__(*args, **kwargs)
@@ -113,6 +119,9 @@ class LandingPageView(generic.FormView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         ctx['form'] = form
+        ctx['general_form'] = self.general_form
+        ctx['category_form'] = self.category_form       
+        
         try:
             data_ob = RegistrationModel.objects.get(user=self.request.user)
         except:data_ob=None
@@ -146,8 +155,6 @@ class LandingPageView(generic.FormView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         data_uri = request.POST.get("signature")
-
-
         formsets = {}
         for ctx_name, formset_class in self.formsets.items():
             formsets[ctx_name] = formset_class(
@@ -164,7 +171,7 @@ class LandingPageView(generic.FormView):
             return self.form_invalid(form, formsets, data_uri)
 
 
-    def form_valid(self, form, formsets, data_uri):
+    def form_valid(self, form, formsets, data_uri,):
         """
         Called if all forms are valid. Creates Assignment instance along with the
         associated AssignmentQuestion instances then redirects to success url
@@ -326,3 +333,5 @@ class SaveContactDetails(View):
         # print("in viewwwwwwwwwwwwwwwwwwwww",name,email,subjt,msg)
         contct_obj = ContactDetailsModel.objects.create(name=name,email=email,subject=subjt,message=message)
         return HttpResponse(json.dumps('success'), content_type='json')
+
+

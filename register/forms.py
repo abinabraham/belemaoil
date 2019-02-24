@@ -85,7 +85,7 @@ from django.utils.translation import gettext as _
 
 class ContractorModelForm(ModelForm):
     
-    service_catgry =  forms.MultipleChoiceField(label=_("Services Category"),
+    service_catgry =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,label=_("Services Category"),
                                     choices=[(item.pk, item) for item in ServiceCategory.objects.all()])
     class Meta:
         model = ContractorModel

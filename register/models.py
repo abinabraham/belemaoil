@@ -83,23 +83,13 @@ class ContractorModel(models.Model):
     submission_date = models.DateTimeField(auto_now=True)
     signature = models.FileField(upload_to='media/contrator/files', null=True, blank= True)
     service_catgry = models.ManyToManyField(ServiceCategory,null=True, blank= True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
 
 
     def __str__(self):
         return self.company_name
-
-    # contact = models.CharField(max_length=45,null=False, blank=False)
-    # email = models.EmailField(null=False, blank=False)
-    # website  = models.URLField(null=False, blank=False)
-    # reg_office_address = models.TextField(blank=True, null=True)
-    # princ
-    # state_origin = models.ForeignKey(StatesMaster,null=False, blank=False)
-    # #contact person
-    # contact_person_name = models.CharField(max_length=75,null=False, blank=False)
-    # contact_person_email = models.EmailField(null=False, blank=False)
-    # contact_person_phno= models.CharField(max_length=75,null=False, blank=False)
-    # designation = models.CharField(max_length=75,null=False, blank=False)
 
 
 class PhoneNumber(models.Model):
