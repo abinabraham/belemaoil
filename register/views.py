@@ -23,6 +23,9 @@ import string
 from forms import *
 from django.conf import settings
 from django.views import generic
+from binascii import a2b_base64
+
+from django.core.files.base import ContentFile
 
 
 def random_with_N_digits(n):
@@ -105,24 +108,17 @@ class LandingPageView(generic.FormView):
                          }
 
 
-    def get_object(self, queryset=None):
-        """
-        This parts allows generic.UpdateView to handle creating products as
-        well. The only distinction between an UpdateView and a CreateView
-        is that self.object is None. We emulate this behavior.
-
-        This method is also responsible for setting self.product_class and
-        self.parent.
-        """
-        self.creating = 'pk' not in self.kwargs
-        contract = super(LandingPageView, self).get_object(queryset)
-        return contract
-
     def get_context_data(self, **kwargs):
         ctx = super(LandingPageView, self).get_context_data(**kwargs)
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         ctx['form'] = form
+        try:
+            data_ob = RegistrationModel.objects.get(user=self.request.user)
+        except:data_ob=None
+        ctx['data_ob'] = data_ob
+
+        
 
         for ctx_name, formset_class in self.formsets.items():
             if ctx_name not in ctx:
@@ -149,7 +145,9 @@ class LandingPageView(generic.FormView):
         """
         form_class = self.get_form_class()
         form = self.get_form(form_class)
- 
+        data_uri = request.POST.get("signature")
+
+
         formsets = {}
         for ctx_name, formset_class in self.formsets.items():
             formsets[ctx_name] = formset_class(
@@ -161,12 +159,12 @@ class LandingPageView(generic.FormView):
 
         cross_form_validation_result = self.clean(form, formsets)
         if is_valid and cross_form_validation_result:
-            return self.form_valid(form, formsets)
+            return self.form_valid(form, formsets, data_uri)
         else:
-            return self.form_invalid(form, formsets)
+            return self.form_invalid(form, formsets, data_uri)
 
 
-    def form_valid(self, form, formsets):
+    def form_valid(self, form, formsets, data_uri):
         """
         Called if all forms are valid. Creates Assignment instance along with the
         associated AssignmentQuestion instances then redirects to success url
@@ -177,7 +175,14 @@ class LandingPageView(generic.FormView):
         Returns: an HttpResponse to success url
 
         """
+
+        data_uri = data_uri
+        head, data = data_uri.split(',')
+        binary_data = a2b_base64(data)
+
+
         self.object = form.save(commit=False)
+        self.object.signature.save('sign_'+self.request.user.username+'.jpg', ContentFile(binary_data), save=False)
         self.object.user = self.request.user
         self.object.save()
 
@@ -193,7 +198,7 @@ class LandingPageView(generic.FormView):
         messages.success(self.request, 'Thank you for submitting details. Will prcoess and let you know the status.')
         return HttpResponseRedirect(self.get_success_url())
 
-    def form_invalid(self, form, formsets):
+    def form_invalid(self, form, formsets, data_uri):
         """
         Called if a form is invalid. Re-renders the context data with the
         data-filled forms and errors.

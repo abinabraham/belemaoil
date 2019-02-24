@@ -142,7 +142,7 @@ class WorkPerformanceDetails(models.Model):
     location = models.CharField(max_length=75,null=False, blank=False)
     total_value_contract = models.IntegerField(null=False,blank=False)
     client_contact_person = models.CharField(max_length=45,null=False, blank=False)
-    job_compltn_certificate  = models.FileField(upload_to='media/contrator/files')
+    job_compltn_certificate  = models.FileField(upload_to='media/contrator/signatures')
     contract = models.ForeignKey(ContractorModel,null=False, blank=False)
 
     def __str__(self):
