@@ -41,6 +41,9 @@ admin.site.register(HealthPolicy)
 admin.site.register(HealthCertificates)
 admin.site.register(OtherDoc)
 admin.site.register(StatesMaster)
+admin.site.register(ServiceCategory)
+
+
 
 
 

@@ -45,7 +45,14 @@ class StatesMaster(models.Model):
     def __str__(self):
         return self.state
 
+class ServiceCategory(models.Model):
 
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+  class Meta:
+    ordering = ['name']
 
 class ContractorModel(models.Model):
 
@@ -75,7 +82,7 @@ class ContractorModel(models.Model):
     state_origin = models.ForeignKey(StatesMaster,null=False, blank=False)
     submission_date = models.DateTimeField(auto_now=True)
     signature = models.FileField(upload_to='media/contrator/files', null=True, blank= True)
-    # service_catgry =  models.CharField(max_length=45,choices=SERVICE_CATGRY_CHOICES)
+    service_catgry = models.ManyToManyField(ServiceCategory,null=True, blank= True)
 
 
 

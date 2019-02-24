@@ -185,6 +185,7 @@ class LandingPageView(generic.FormView):
         self.object.signature.save('sign_'+self.request.user.username+'.jpg', ContentFile(binary_data), save=False)
         self.object.user = self.request.user
         self.object.save()
+        form.save_m2m()
 
 
 

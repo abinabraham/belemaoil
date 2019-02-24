@@ -79,19 +79,14 @@ from django.forms import ModelForm
 from django.forms.models import inlineformset_factory
 
 from models import *
+from django.utils.translation import gettext as _
 
 
 
 class ContractorModelForm(ModelForm):
-    SERVICE_CATGRY_CHOICES = (
-      ('Equipment Lease', 'Equipment Lease'),
-      ('Oil Tools', 'Oil Tools'),
-      ('Technology', 'Technology'),
-      ('Oil Well Servicing', 'Oil Well Servicing'),
-
-    )
-    service_catgry =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,
-                                             choices=SERVICE_CATGRY_CHOICES)
+    
+    service_catgry =  forms.MultipleChoiceField(label=_("Services Category"),
+                                    choices=[(item.pk, item) for item in ServiceCategory.objects.all()])
     class Meta:
         model = ContractorModel
         exclude = ('user','submission_date')
