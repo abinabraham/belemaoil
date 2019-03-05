@@ -5,7 +5,7 @@
    margin: 10px;
    }
    ul#id_service_catgry, #id_works, #id_maintenence, #id_supply, #id_rehabcivil, #id_general_suppl
-   ,#id_safety_lab_prods, #id_mech_parts, #id_heat_prods, #id_consultancy, #id_protologi, #id_lab, #id_onshore{
+   ,#id_safety_lab_prods, #id_mech_parts, #id_heat_prods, #id_consultancy, #id_protologi, #id_lab, #id_onshore, #id_rehabmech, #id_rehabelectr, #id_general_suppl, #id_safety_lab_prods, #id_heat_prods, #id_mech_parts, #id_consultancy, #id_onshore, #id_lab, #id_protologi{
    list-style-type: none;
    }
    .signature-pad {
@@ -81,6 +81,32 @@
    justify-content: space-between;
    margin-top: 8px;
    }
+
+   label.con_info{
+      font-size: 15px;
+    font-weight: 600 !important;
+    float: right;
+        margin-bottom: 19px;
+   }
+   label.con_mngmt{
+      font-size: 15px;
+    font-weight: 600 !important;
+    float: left;
+        margin-bottom: 19px;
+
+   }
+   .inline-form{
+          margin-bottom: 10px;
+   }
+   #id_works, #id_maintenence, #id_supply, #id_rehabcivil, #id_rehabmech, #id_rehabelectr, #id_general_suppl, #id_safety_lab_prods, #id_heat_prods, #id_mech_parts, #id_consultancy, #id_onshore, #id_lab, #id_protologi{
+      float: left;
+      padding-left: 0px;
+   }
+   .input-sm {
+    /*height: 20px;*/
+    float: left;
+   
+ }
 </style>
 <div role="main" class="main" onselectstart="return false">
 <section class="page-header">
@@ -112,7 +138,7 @@
             <span>advance.</span>
             <span>progress.</span>
             </span>
-            </span>				
+            </span>           
             </strong>
          </h2>
       </div>
@@ -129,15 +155,21 @@
          <h4>VENDOR ID : <span class="label label-dark">{{data_ob.vendor}}</span></h4>
       </div>
       <div class="col-md-12">
+
+      <div class="alert alert-success" id="contracts_mngmnt" style="display: none;">                      
+            <strong>Well done!</strong> <a href="" class="alert-link">Succesfully Submitted</a>                            
+         </div>
+
+
          {% if messages %}
          {% for message in messages %}
          {% if message.tags == "success" %}
-         <div class="alert alert-success">						    
-            <strong>Well done!</strong> <a href="" class="alert-link">{{message}} </a>										
+         <div class="alert alert-success">                      
+            <strong>Well done!</strong> <a href="" class="alert-link">{{message}} </a>                            
          </div>
          {% else %}
          <div class="alert alert-danger">
-            <strong>Oops!</strong> <a href="" class="alert-link">{{message}} </a>										
+            <strong>Oops!</strong> <a href="" class="alert-link">{{message}} </a>                              
          </div>
          {% endif %}
          {% endfor %}
@@ -219,81 +251,341 @@
                      <div class="box-content">
                         <div class="row">
                            <form action="." method="post" enctype="multipart/form-data" id="work-form">{% csrf_token %}
-
+                           <div class="col-md-1">
                             <p>
-                                 <label for="id_reg_no">1.    GENERAL PURPOSE (#5000,00 DPR Permit)</label>
+                                 <label for="id_reg_no" class="con_mngmt">1.</label>
                               </p>
-                              <hr>
+                              </div>
+                              <div class="col-md-11">
                               <p>
-                                 <label for="id_reg_no">1.1.1    WORKS (Artisans)</label>
+                                 <label for="id_reg_no" class="con_mngmt">    GENERAL PURPOSE (#5, 000.00 DPR Permit)</label>
+                              </p>
+                              </div>
+                              <hr><hr><hr><hr>
+                              <div class="col-md-1">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt">NO</label>
+                              </p>
+                              </div>
+                              <div class="col-md-11">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt">SERVICES</label>
+                              </p>
+                              </div>
+
+
+                              <div class="col-md-1">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt">1.1.1</label>
+                              </p>
+                              </div>
+                              <div class="col-md-11">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt"> WORKS (Artisans)</label>
+                              </p>
+                              </div>
+
+                              <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
                                  {{general_form.works}}
                               </p>
+                              </div>
                               <hr>
+                               <div class="col-md-1">
 <p>
-                                 <label for="id_reg_no">1.1.2    MAINTENENCE (Artisans)</label>
-                                 {{general_form.maintenence}}
+                                 <label for="id_reg_no" class="con_mngmt">1.1.2</label>
                               </p>
+                              </div>
+                               <div class="col-md-11">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt">MAINTENENCE (Artisans)</label>
+                                
+                              </p>
+                              </div>
+                               <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
+                                  {{general_form.maintenence}}
+                              </p>
+                              </div>
+
+
                               <hr>
+
+
+                              <div class="col-md-3">
 <p>
-                                 <label for="id_reg_no">1.1.3    SUPPLY (Artisans)</label>
-                                 {{general_form.supply}}
+                                 <label for="id_reg_no" class="con_mngmt">1.1.3</label>
                               </p>
+                              </div>
+                               <div class="col-md-9">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt"> SUPPLY (Artisans)</label>
+                                
+                              </p>
+                              </div>
+                               <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
+                                  {{general_form.supply}}
+                              </p>
+                              </div>
                               <hr>
-                              <label for="id_reg_no">2        MAJOR CATEGORY N25,000,00 DPR Permit</label>
+
+                               <div class="col-md-1">
+                            <p>
+                                 <label for="id_reg_no" class="con_mngmt" style="    margin: 25px 0 25px 0;">2.</label>
+                              </p>
+                              </div>
+                               <div class="col-md-11">
+                            <p>
+                                 <label for="id_reg_no" class="con_mngmt" style="    margin: 25px 0 25px 0;">    MAJOR CATEGORY N25,000,00 DPR Permit</label>
+                              </p>
+                              </div>
+
+                              <hr><hr><hr><hr>
+                              <div class="col-md-1">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt">NO</label>
+                              </p>
+                              </div>
+                              <div class="col-md-11">
+                              <p>
+                                 <label for="id_reg_no" class="con_mngmt">SERVICES</label>
+                              </p>
+                              </div>
+
+                               <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">A)</label>
+                              </p>
+                              </div>
+                               <div class="col-md-11">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt"> CIVIL WORKS</label>
+                                
+                              </p>
+                              </div>
+                               <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
+                                  {{category_form.rehabcivil}}
+                              </p>
+                              </div>
+
+
+
+ <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">B)</label>
+                              </p>
+                              </div>
+                               <div class="col-md-11">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt"> MECHANICAL WORKS</label>
+                                
+                              </p>
+                              </div>
+                               <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
+                                 {{category_form.rehabmech}}
+                              </p>
+                              </div>
+
                               <hr>
-                              <label for="id_reg_no">1.2.1        REHABILITATION/UPGRADE/FABRICATIN WORKS</label>
-                              <label for="id_reg_no">A) CIVIL WORKS</label>
-                              {{category_form.rehabcivil}}
-                              <hr>
-                              <label for="id_reg_no">B) MECHANICAL WORKS</label>
-                              {{category_form.rehabmech}}
-                              <hr>
-                              <label for="id_reg_no">C) ELECTRICAL WORKS</label>
+
+
+                              <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">C)</label>
+                              </p>
+                              </div>
+                               <div class="col-md-11">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt"> ELECTRICAL WORKS</label>
+                                
+                              </p>
+                              </div>
+                               <div class="col-md-1"></div>
+                              <div class="col-md-11">
+                              <p>
+                                 
                               {{category_form.rehabelectr}}
+                              </p>
+                              </div>
+
+
                                <hr>
-                              <label for="id_reg_no">1.2.3      EQUIPMENT MATERIAL SUPPLY SERVICES</label>
-                              <label for="id_reg_no">A) General Supplies</label>
 
-                              {{category_form.general_suppl}}
+
+                                <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">1.2.3 </label>
+                              </p>
+                              </div>
+                               <div class="col-md-11">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt"> EQUIPMENT MATERIAL SUPPLY SERVICES</label>
+                                
+                              </p>
+                              </div>
+
+                               <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">A) </label>
+                              </p>
+                              </div>
+                               <div class="col-md-5">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt">  General Supplies</label>
+                                
+                              </p>
+                              </div>
+
+                               <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">C) </label>
+                              </p>
+                              </div>
+                               <div class="col-md-5">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt">  Safety Lab and Chemical Supplies</label>
+                                
+                              </p>
+                              </div>
+
+                              <div class="col-md-1">  </div>
+                               <div class="col-md-5">
+                               {{category_form.general_suppl}}
+                              </div>
+
+
+<div class="col-md-1">
+                              </div>
+                               <div class="col-md-5">
+                               {{category_form.safety_lab_prods}}
+                              </div>
+
+
+
+ <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">B) </label>
+                              </p>
+                              </div>
+                               <div class="col-md-5">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt">  Heating, Cooling & Energy Products</label>
+                                
+                              </p>
+                              </div>
+
+                              <div class="col-md-1">
+<p>
+                                 <label for="id_reg_no" class="con_mngmt">D) </label>
+                              </p>
+                              </div>
+                               <div class="col-md-5">
+                               <p>
+                                 <label for="id_reg_no" class="con_mngmt">  Mechanical Parts</label>
+                                
+                              </p>
+                              </div>
+
+                                    <div class="col-md-1"> </div>
+                               <div class="col-md-5">
+                                {{category_form.heat_prods}}
+                              </div>
+
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-5" style="    padding-bottom: 96px;">
+                                 {{category_form.mech_parts}}
+                              </div>                             
 <hr>
-                              <label for="id_reg_no">B) Heating, Cooling & Energy Products</label>
-                              {{category_form.heat_prods}}
-<hr>
-                              <label for="id_reg_no">C) Safety Lab and Chemical Supplies</label>
-
-                              {{category_form.safety_lab_prods}}
-                              <hr>
-                              <label for="id_reg_no">D) Mechanical Parts</label>
-
-
-                              {{category_form.mech_parts}}
 
  <hr>
-                              <label for="id_reg_no">1.2.4       CONSULTANCY</label>
-                              {{category_form.consultancy}}
+
+ <div class="col-md-2">  <label for="id_reg_no">1.2.4 </label></div>
+                               <div class="col-md-10">
+                                <label for="id_reg_no" class="con_mngmt">CONSULTANCY</label>
+                              </div>
+
+ <hr>
+ <hr>
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-11">
+                                {{category_form.consultancy}}
+                              </div>                             
+<hr><hr><hr><hr>
+
+
+
 <hr>
-                              <label for="id_reg_no">1.2.5       WATER BOREHOLE</label>
-                              {{category_form.waterborehole}}
+<div class="col-md-2">  <label for="id_reg_no">1.2.5 </label></div>
+                               <div class="col-md-10">
+                                <label for="id_reg_no" class="con_mngmt">WATER BOREHOLE</label>
+                              </div>
                               <hr>
-                              <label for="id_reg_no">1.2.6      PROTOCOL AND LOGISTICS</label>
+ <hr>
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-11">
+                                        {{category_form.waterborehole}}
+                              </div>          
 
-                              {{category_form.protologi}}
                               <hr>
-                              <label for="id_reg_no">1.2.7      LABORATORY</label>
-                              {{category_form.lab}}
+
+                              <div class="col-md-2">  <label for="id_reg_no">1.2.6 </label></div>
+                               <div class="col-md-10">
+                                <label for="id_reg_no" class="con_mngmt">PROTOCOL AND LOGISTICS</label>
+                              </div>
                               <hr>
-                              <label for="id_reg_no">1.2.8      ONSHORE ENVIRONMENTAL/WASTE MANAGEMENT</label>
-                              {{category_form.onshore}}
+ <hr>
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-11">
+                                          {{category_form.protologi}}
+                              </div> 
+
+                              <hr>
+
+                              <div class="col-md-2">  <label for="id_reg_no">1.2.7 </label></div>
+                               <div class="col-md-10">
+                                <label for="id_reg_no" class="con_mngmt">LABORATORY</label>
+                              </div>
+                              <hr>
+ <hr>
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-11">
+                                           {{category_form.lab}}
+                              </div> 
+
+                              <hr>
+
+
+                              <div class="col-md-2">  <label for="id_reg_no">1.2.8 </label></div>
+                               <div class="col-md-10">
+                                <label for="id_reg_no" class="con_mngmt">ONSHORE ENVIRONMENTAL/WASTE MANAGEMENT</label>
+                              </div>
+                              <hr>
+ <hr>
+                              <div class="col-md-1"> </div>
+                               <div class="col-md-11">
+                                   {{category_form.onshore}}
+
+                              </div> 
+
+
 
 
 
                                
 
                                
-<!-- 
+
                               <div class="col-md-12">
                                     <button type="button" class="btn btn-success mr-xs mb-sm " id="work-form-submit">SUBMIT</button>
-                                 </div> -->
+                                 </div>
 
 
 
@@ -311,248 +603,382 @@
                         <div class="row">
                            <form action="." method="post" enctype="multipart/form-data" id="contract-form">
                               {% csrf_token %}
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">Company Name:</label>
-                                 {{form.company_name}}
+                                 <label for="id_reg_no" class="con_info">Company Name</label>
+                                 
                               </p>
+                              </div>
+                               <div class="col-md-5">
+                               {{form.company_name}}
+                               </div>
+                               <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">Logo:</label>
-                                 {{form.logo}}
+                                 <label for="id_reg_no" class="con_info">Logo</label>
+                              
                               </p>
+                              </div>
+                               <div class="col-md-5">
+                                {{form.logo}}
+                               </div>
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">Registration no:</label>
-                                 {{form.reg_no}}
+                                 <label for="id_reg_no" class="con_info">Registration no</label>
+                                 
                               </p>
+                              </div>
+                               <div class="col-md-5">
+                               {{form.reg_no}}
+                               </div>
                               <hr>
+                             <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">DPR Permit Number:</label>
-                                 {{form.DPR_Permit_no}}
+                                 <label for="id_reg_no" class="con_info">DPR Permit Number</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">
+                              {{form.DPR_Permit_no}}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">Tax Identification Number (TIN):</label>
-                                 {{form.TIN_no}}
+                                 <label for="id_reg_no" class="con_info">Tax Identification Number (TIN)</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">
+                              {{form.TIN_no}}
+                              </div>
+                               <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">NIPEX Registration - Yes | No:</label>
-                                 {{form.NIPEX_reg_status}}
+                                 <label for="id_reg_no" class="con_info">NIPEX Registration - Yes | No</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">
+                              {{form.NIPEX_reg_status}}
+                              </div>
+
                               <hr>
+
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Phone Number</label>
+                                 
+                              </p>
+                              </div>
+                              <div class="col-md-5">
                               {{ phone_formset.management_form }}
                               {% for link_form in phone_formset %}
                               <div class="link-formset">
-                                 Phone Number:  {{ link_form.phonenumber }}
+                               {{ link_form.phonenumber }}
                                  {% if link_form.phonenumber.errors %}
                                  {% for error in link_form.phonenumber.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if phone_formset.non_form_errors %}
                               {% for error in phone_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">E-mail Address</label>
+                                 
+                              </p>
+                              </div>
+                              <div class="col-md-5">
                               {{ email_formset.management_form }}
                               {% for link_form in email_formset %}
                               <div class="email_formset">
-                                 E-mail Address:  {{ link_form.email }}
+                               {{ link_form.email }}
                                  {% if link_form.email.errors %}
                                  {% for error in link_form.email.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if email_formset.non_form_errors %}
                               {% for error in email_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Website</label>
+                                 
+                              </p>
+                              </div>
+                              <div class="col-md-5">
                               {{ website_formset.management_form }}
                               {% for link_form in website_formset %}
                               <div class="website_formset">
-                                 Website:  {{ link_form.website }}
+                                 {{ link_form.website }}
                                  {% if link_form.website.errors %}
                                  {% for error in link_form.website.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if website_formset.non_form_errors %}
                               {% for error in website_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              {{ reg_ofc_formset.management_form }}
+
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Registered Office Address</label>
+                                 
+                              </p>
+                              </div>
+                              <div class="col-md-5">
+                             {{ reg_ofc_formset.management_form }}
                               {% for link_form in reg_ofc_formset %}
                               <div class="reg_ofc_formset">
-                                 Registered Office Address:  {{ link_form.address }}
+                                {{ link_form.address }}
                                  {% if link_form.address.errors %}
                                  {% for error in link_form.address.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if reg_ofc_formset.non_form_errors %}
                               {% for error in reg_ofc_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              {{ principal_formset.management_form }}
+
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Principal Owners Or Partners</label>
+                                 
+                              </p>
+                              </div>
+                              <div class="col-md-5">
+                             {{ principal_formset.management_form }}
                               {% for link_form in principal_formset %}
                               <div class="principal_formset">
-                                 Principal Owners Or Partners :  {{ link_form.partner }}
+                                 {{ link_form.partner }}
                                  {% if link_form.partner.errors %}
                                  {% for error in link_form.partner.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if principal_formset.non_form_errors %}
                               {% for error in principal_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">Annual Turn Over:</label>
-                                 {{form.annual_turnover}}
+                                 <label for="id_reg_no" class="con_info">Annual Turn Over</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">
+                                  {{form.annual_turnover}}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">State Equity if Nigerian Citizens or Associations:</label>
-                                 {{form.state_equity}}
+                                 <label for="id_reg_no" class="con_info">State Equity if Nigerian Citizens or Associations</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">
+                           {{form.state_equity}}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">How Long have you been in this type of business:</label>
-                                 {{form.estimate_time}}
+                                 <label for="id_reg_no" class="con_info">How Long have you been in this type of business</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">{{form.estimate_time}}</div>
+
+
+
                               <hr>
+                              
+                             
+                             
+
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Director Name</label>
+                                 
+                              </p>
+                              </div>
+                               <div class="col-md-5">
+                                <div class="dir_formset">
                               {{ dir_formset.management_form }}
                               {% for link_form in dir_formset %}
-                              <div class="dir_formset">
-                                 Director Name:  {{ link_form.dir_name }}
+
+
+                                  Director Name  {{ link_form.dir_name }}
                                  {% if link_form.dir_name.errors %}
                                  {% for error in link_form.dir_name.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Director Nationality:  {{ link_form.dir_nationality}}
+                                 Director Nationality {{ link_form.dir_nationality}}
                                  {% if link_form.dir_nationality.errors %}
                                  {% for error in link_form.dir_nationality.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if dir_formset.non_form_errors %}
                               {% for error in dir_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
+
+
                               <hr>
-                              <label for="id_reg_no">Work Perfomance History</label>
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Work Perfomance History</label>
+                                 
+                              </p>
+                              </div>
+                             <div class="col-md-5">
                               {{ work_performance_formset.management_form }}
                               {% for link_form in work_performance_formset %}
                               <div class="work_performance_formset">
-                                 Client:  {{ link_form.client_name }}
+                                 Client  {{ link_form.client_name }}
                                  {% if link_form.client_name.errors %}
                                  {% for error in link_form.client_name.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Execution Date:  {{ link_form.client_exectn_date }}
+                                 Execution Date  {{ link_form.client_exectn_date }}
                                  {% if link_form.client_exectn_date.errors %}
                                  {% for error in link_form.client_exectn_date.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Location:  {{ link_form.location}}
+                                 Location  {{ link_form.location}}
                                  {% if link_form.location.errors %}
                                  {% for error in link_form.location.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Total Value of Contract:  {{ link_form.total_value_contract }}
+                                 Total Value of Contract  {{ link_form.total_value_contract }}
                                  {% if link_form.total_value_contract.errors %}
                                  {% for error in link_form.total_value_contract.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Client Contact Person:  {{ link_form.client_contact_person}}
+                                 Client Contact Person  {{ link_form.client_contact_person}}
                                  {% if link_form.client_contact_person.errors %}
                                  {% for error in link_form.client_contact_person.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Job Completion Certificate:  {{link_form.job_compltn_certificate}}
+                                 Job Completion Certificate  {{link_form.job_compltn_certificate}}
                                  {% if link_form.job_compltn_certificate.errors %}
                                  {% for error in link_form.job_compltn_certificate.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if work_performance_formset.non_form_errors %}
                               {% for error in work_performance_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+                              <div class="col-md-7">
                               <p>
-                                 <label for="id_reg_no">State of Origin:</label>
-                                 {{form.state_origin}}
+                                 <label for="id_reg_no" class="con_info">State of Origin</label>
+                                 
                               </p>
+                              </div>
+                              <div class="col-md-5">{{form.state_origin}}</div>
                               <hr>
-                              <label for="id_reg_no">Contact Person</label>
+                              <div class="col-md-7">
+                              <p>
+                                 <label for="id_reg_no" class="con_info">Contact Person</label>
+                                 </p>
+                              </div>
+                              <div class="col-md-5">
                               {{ contact_formset.management_form }}
                               {% for link_form in contact_formset %}
                               <div class="contact_formset">
-                                 Name:  {{ link_form.name }}
+                                 Name  {{ link_form.name }}
                                  {% if link_form.name.errors %}
                                  {% for error in link_form.name.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Email:  {{ link_form.email}}
+                                 Email  {{ link_form.email}}
                                  {% if link_form.email.errors %}
                                  {% for error in link_form.email.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Phone Number:  {{ link_form.phone }}
+                                 Phone Number  {{ link_form.phone }}
                                  {% if link_form.phone.errors %}
                                  {% for error in link_form.phone.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                                 Designation:  {{ link_form.designation}}
+                                 Designation  {{ link_form.designation}}
                                  {% if link_form.designation.errors %}
                                  {% for error in link_form.designation.errors %}
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if contact_formset.non_form_errors %}
                               {% for error in contact_formset.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Service Category (Multi Select)</label>{{form.service_catgry}}
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Service Category (Multi Select)</label>
+                              </p></div>
+                              <div class="col-md-5">{{form.service_catgry}}</div>
                               <hr>
-                              <label for="id_reg_no">Certificate of Incorporation</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Certificate of Incorporation</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ certfct_incorprtn.management_form }}
                               {% for link_form in certfct_incorprtn %}
                               <div class="certfct_incorprtn">
@@ -562,15 +988,20 @@
                                  {{ error|escape }}
                                  {% endfor %}
                                  {% endif %}
-                              </div>
+                              </div><hr><hr>
                               {% endfor %}
                               {% if certfct_incorprtn.non_form_errors %}
                               {% for error in certfct_incorprtn.non_form_errors %}
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Company Profile</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Company Profile</label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ cmpny_profile_file.management_form }}
                               {% for link_form in cmpny_profile_file %}
                               <div class="cmpny_profile_file">
@@ -587,8 +1018,12 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Organization Chart of Key Personnel</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Organization Chart of Key Personnel</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ orgnztn_chart_formset.management_form }}
                               {% for link_form in orgnztn_chart_formset %}
                               <div class="orgnztn_chart_formset">
@@ -605,8 +1040,12 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Past Projects ( 2 Years )</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Past Projects ( 2 Years )</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ past_project_formset.management_form }}
                               {% for link_form in past_project_formset %}
                               <div class="past_project_formset">
@@ -623,8 +1062,12 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Form CO2</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Form CO2</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ formco2_formset.management_form }}
                               {% for link_form in formco2_formset %}
                               <div class="formco2_formset">
@@ -641,8 +1084,13 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
+
                               <hr>
-                              <label for="id_reg_no">Form CO7</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Form CO7</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ formco7_formset.management_form }}
                               {% for link_form in formco7_formset %}
                               <div class="formco7_formset">
@@ -659,8 +1107,12 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
-                              <label for="id_reg_no">Form CO10</label>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Form CO10</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ form_co10_formset.management_form }}
                               {% for link_form in form_co10_formset %}
                               <div class="form_co10_formset">
@@ -677,11 +1129,16 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Department of Petroleum Resources (DPR) Certificate</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ dpr_formset.management_form }}
                               {% for link_form in dpr_formset %}
                               <div class="dpr_formset">
-                                 Department of Petroleum Resources (DPR) Certificate: {{ link_form.dpr_certi }}
+                                  {{ link_form.dpr_certi }}
                                  {% if link_form.dpr_certi.errors %}
                                  {% for error in link_form.dpr_certi.errors %}
                                  {{ error|escape }}
@@ -694,11 +1151,17 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Audited Accounts Or Statement of Affairs</label>
+                              </p></div>
+                               <div class="col-md-5">
                               {{ audit_formset.management_form }}
                               {% for link_form in audit_formset %}
                               <div class="audit_formset">
-                                 Audited Accounts Or Statement of Affairs: {{ link_form.acc_file }}
+                                 {{ link_form.acc_file }}
                                  {% if link_form.acc_file.errors %}
                                  {% for error in link_form.acc_file.errors %}
                                  {{ error|escape }}
@@ -711,11 +1174,17 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">VAT Certificate of Registration</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ vat_formset.management_form }}
                               {% for link_form in vat_formset %}
                               <div class="vat_formset">
-                                 VAT Certificate of Registration: {{ link_form.certificate }}
+                                 {{ link_form.certificate }}
                                  {% if link_form.certificate.errors %}
                                  {% for error in link_form.certificate.errors %}
                                  {{ error|escape }}
@@ -728,11 +1197,18 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Company Tax Clearance Certificate (3 Years)</label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ tax_formset.management_form }}
                               {% for link_form in tax_formset %}
                               <div class="tax_formset">
-                                 Company Tax Clearance Certificate (3 Years): {{ link_form.tax_certifct }}
+                                {{ link_form.tax_certifct }}
                                  {% if link_form.tax_certifct.errors %}
                                  {% for error in link_form.tax_certifct.errors %}
                                  {{ error|escape }}
@@ -745,11 +1221,17 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                               <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Workmen's Compensation Insurance Certificate</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ wcic_formset.management_form }}
                               {% for link_form in wcic_formset %}
                               <div class="wcic_formset">
-                                 Workmen's Compensation Insurance Certificate: {{ link_form.wcic_file }}
+                                  {{ link_form.wcic_file }}
                                  {% if link_form.wcic_file.errors %}
                                  {% for error in link_form.wcic_file.errors %}
                                  {{ error|escape }}
@@ -762,11 +1244,20 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
+
+
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Reference Letter from your Bank</label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ ref_formset.management_form }}
                               {% for link_form in ref_formset %}
                               <div class="ref_formset">
-                                 Reference Letter from your Bank {{ link_form.ref_file }}
+                                {{ link_form.ref_file }}
                                  {% if link_form.ref_file.errors %}
                                  {% for error in link_form.ref_file.errors %}
                                  {{ error|escape }}
@@ -779,11 +1270,17 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">NPL Application Form</label>
+                              </p></div>
+                              <div class="col-md-5">
                               {{ npl_formset.management_form }}
                               {% for link_form in npl_formset %}
                               <div class="npl_formset">
-                                 NPL Application Form {{ link_form.npl }}
+                                  {{ link_form.npl }}
                                  {% if link_form.npl.errors %}
                                  {% for error in link_form.npl.errors %}
                                  {{ error|escape }}
@@ -796,11 +1293,18 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">Current ITF registration Certificate </label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ citf_formset.management_form }}
                               {% for link_form in citf_formset %}
                               <div class="citf_formset">
-                                 Current ITF registration Certificate {{ link_form.citf }}
+                                 {{ link_form.citf }}
                                  {% if link_form.citf.errors %}
                                  {% for error in link_form.citf.errors %}
                                  {{ error|escape }}
@@ -813,11 +1317,18 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                               <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info"> Quality Management System (ISO 9001 Certificate)  </label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ QMS_formset.management_form }}
                               {% for link_form in QMS_formset %}
                               <div class="QMS_formset">
-                                 Quality Management System (ISO 9001 Certificate) {{ link_form.iso_file }}
+                                {{ link_form.iso_file }}
                                  {% if link_form.iso_file.errors %}
                                  {% for error in link_form.iso_file.errors %}
                                  {{ error|escape }}
@@ -830,11 +1341,18 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info"> Health & Safety Certificates</label>
+                              </p></div>
+
+                               <div class="col-md-5">
                               {{ hcert_formset.management_form }}
                               {% for link_form in hcert_formset %}
                               <div class="hcert_formset">
-                                 Health & Safety Certificates {{ link_form.cert }}
+                                  {{ link_form.cert }}
                                  {% if link_form.cert.errors %}
                                  {% for error in link_form.cert.errors %}
                                  {{ error|escape }}
@@ -847,11 +1365,18 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info"> Health & Safety Policy</label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ hpolicy_formset.management_form }}
                               {% for link_form in hpolicy_formset %}
                               <div class="hpolicy_formset">
-                                 Health & Safety Policy {{ link_form.policy }}
+                                  {{ link_form.policy }}
                                  {% if link_form.policy.errors %}
                                  {% for error in link_form.policy.errors %}
                                  {{ error|escape }}
@@ -864,11 +1389,17 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                               <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info"> Other Documents </label>
+                              </p></div>
+ <div class="col-md-5">
                               {{ other_formset.management_form }}
                               {% for link_form in other_formset %}
                               <div class="other_formset">
-                                 Other Documents {{ link_form.doc }}
+                                 {{ link_form.doc }}
                                  {% if link_form.doc.errors %}
                                  {% for error in link_form.doc.errors %}
                                  {{ error|escape }}
@@ -881,12 +1412,19 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+                              </div>
                               <hr>
+
+                              <div class="col-md-7"><p>
+                              <label for="id_reg_no" class="con_info">  Company Profile </label>
+                              </p></div>
+
+                              <div class="col-md-5">
                               {{ cmpny_profile_formset.management_form }}
                               {% for link_form in cmpny_profile_formset %}
                               <div class="cmpny_profile_formset">
                                  <hr>
-                                 Company Profile
+                                
                                  <hr>
                                  Number of Months/Years in Business: {{ link_form.duration }}
                                  {% if link_form.duration.errors %}
@@ -937,6 +1475,10 @@
                               {{ error|escape }}
                               {% endfor %}
                               {% endif %}
+
+                              </div>
+
+
                               <hr>
                               <div class="signature" onselectstart="return false">
                                  Signature
@@ -985,6 +1527,10 @@
 <script src="/static/signature/js/app.js"></script>
 
 <script>
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
     $("#work-form-submit").click(function () {
       // var data = $("#work-form").serialize());
 
@@ -995,7 +1541,9 @@
         type: 'POST',
 
         success: function (data) {
-          alert("heeeeeeeeeeeeee");
+         document.getElementById("work-form").reset();
+          $("#contracts_mngmnt").show();
+          topFunction();
         }
       });
 
@@ -1011,15 +1559,15 @@
      backgroundColor: 'rgb(255, 255, 255)'
    });
    
-   $("#contract-submit").click(function(){	
-   	if($("#contract-form").valid()== true){
-   		var dataURL = signaturePad.toDataURL();
-   	    // download(dataURL, "/media/signaturess.png");
-   	    $("#sign-hide").val(dataURL);
-   	    $("#contract-form").submit();
-   	}else{
-   		alert("Please fill all the required fields")
-   	}
+   $("#contract-submit").click(function(){   
+      if($("#contract-form").valid()== true){
+         var dataURL = signaturePad.toDataURL();
+          // download(dataURL, "/media/signaturess.png");
+          $("#sign-hide").val(dataURL);
+          $("#contract-form").submit();
+      }else{
+         alert("Please fill all the required fields")
+      }
        
      
      
@@ -1203,7 +1751,7 @@
    
            
        });
-   	
+      
    $('.vat_formset').formset({
            addText: 'Add VAT Certificate',
            deleteText: 'Remove',
@@ -1238,7 +1786,7 @@
        });
    
    $('.ref_formset').formset({
-           addText: "Add More",
+           addText: "Add Reference Letter",
            deleteText: 'Remove',
            deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link
            prefix: "{{ ref_formset.prefix }}",
@@ -1297,7 +1845,7 @@
    
            
        });
-   	$('.other_formset').formset({
+      $('.other_formset').formset({
            addText: "Add More",
            deleteText: 'Remove',
            deleteCssClass: "btn btn-block btn-primary bordered", // CSS class applied to the delete link

@@ -89,37 +89,37 @@ class ContractorModel(models.Model):
 
 
     def __str__(self):
-        return self.company_name
+        return str(self.company_name)
 
 
 class PhoneNumber(models.Model):
     phonenumber = models.CharField(max_length=255)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_phone")
     def __str__(self):
         return self.phonenumber
 
 
 class Email(models.Model):
     email = models.CharField(max_length=255)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_email")
     def __str__(self):
         return self.email
 
 class Website(models.Model):
     website = models.CharField(max_length=255)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_website")
     def __str__(self):
         return self.website
 
 class RegisteredOffice(models.Model):
     address = models.TextField(blank=True, null=True)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_ofc")
     def __str__(self):
         return self.id
 
 class PrincipalOwner(models.Model):
     partner = models.CharField(max_length=50,blank=True, null=True)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_princi")
 
     def __str__(self):
         return self.partner
@@ -127,7 +127,7 @@ class PrincipalOwner(models.Model):
 class DirectorDetails(models.Model):
     dir_name = models.CharField(max_length=50,blank=True, null=True)
     dir_nationality = models.CharField(max_length=50,blank=True, null=True)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_dir")
 
     def __str__(self):
         return self.dir_name
