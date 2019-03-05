@@ -140,7 +140,7 @@ class WorkPerformanceDetails(models.Model):
     total_value_contract = models.IntegerField(null=False,blank=False)
     client_contact_person = models.CharField(max_length=45,null=False, blank=False)
     job_compltn_certificate  = models.FileField(upload_to='media/contrator/signatures')
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_work")
 
     def __str__(self):
         return self.client_name
@@ -152,7 +152,7 @@ class ContactPersonDetails(models.Model):
     email = models.EmailField(null=False, blank=False)
     phone= models.CharField(max_length=75,null=False, blank=False)
     designation = models.CharField(max_length=75,null=False, blank=False)
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_contact")
 
     def __str__(self):
         return self.name
@@ -160,14 +160,14 @@ class ContactPersonDetails(models.Model):
 
 class CertificateIncorporation(models.Model):
     certi_file = models.FileField(upload_to='media/contrator/files')
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_inco")
 
     def __str__(self):
         return str(self.id)
 
 class CompanyProfileFile(models.Model):
     company_profile_file = models.FileField(upload_to='media/contrator/files')
-    contract = models.ForeignKey(ContractorModel,null=False, blank=False)
+    contract = models.ForeignKey(ContractorModel,null=False, blank=False, related_name="contract_prof")
 
     def __str__(self):
         return str(self.id)

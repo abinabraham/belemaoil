@@ -55,7 +55,7 @@ class CInfoView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(CInfoView, self).get_context_data(**kwargs)
-        contract_list = ContractorModel.objects.all()
+        contract_list = ContractorModel.objects.all().order_by('-id')
         page = self.request.GET.get('page', 1)
         paginator = Paginator(contract_list, 10)
         try:

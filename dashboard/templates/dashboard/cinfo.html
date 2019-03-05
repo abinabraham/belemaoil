@@ -375,14 +375,18 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                                                     <div class="col-md-9">
                                                                         {% if i.contract_dir.all %}{% for j in i.contract_dir.all %}
+
+                                                                        <div class="row">
                                                                         <label class="control-label col-md-6">Director Name - </label>
 
                                                                         <label class="control-label col-md-6">{{j.dir_name}}</label>
+                                                                        </div>
+                                                                        <div class="row">
 
                                                                         <label class="control-label col-md-6">Director Nationality - </label>
 
                                                                         <label class="control-label col-md-6">{{j.dir_nationality}}</label>
-
+                                                                        </div>
 
                                                                         
                                                                         {% endfor %} 
@@ -396,6 +400,164 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </div>
 
 
+                                                        <div class="row">
+                                                            <!--/span-->
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Work Perfomance History</label>
+
+                                                                    <div class="col-md-9">
+                                                                        {% if i.contract_work.all %}{% for j in i.contract_work.all %}
+
+                                                                        <div class="row">
+                                                                        <label class="control-label col-md-6">Client Name - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.client_name}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                        <label class="control-label col-md-6">Client Execution Date - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.client_exectn_date}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                         <label class="control-label col-md-6">Location - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.location}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                         <label class="control-label col-md-6">Total Value Of Contract - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.total_value_contract}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                          <label class="control-label col-md-6">Contact Person - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.client_contact_person}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                         <label class="control-label col-md-6">Job Completion Certificate - </label>
+
+                                                                       
+
+                                                                        <a href='{{j.job_compltn_certificate}}' download  class="col-md-6">Download</a>
+                                                                        </div>
+
+
+
+                                                                        
+                                                                        {% endfor %} 
+                                                                        {% else %}
+                                                                        ----
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <!--/span-->
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Contact Person</label>
+
+                                                                    <div class="col-md-9">
+                                                                        {% if i.contract_contact.all %}{% for j in i.contract_contact.all %}
+
+                                                                        <div class="row">
+                                                                        <label class="control-label col-md-6">Name - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.name}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                        <label class="control-label col-md-6">Email Date - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.email}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                         <label class="control-label col-md-6">Phone Number - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.phone}}</label>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                         <label class="control-label col-md-6">Designation - </label>
+
+                                                                        <label class="control-label col-md-6">{{j.designation}}</label>
+                                                                        </div>
+                                                                        
+
+
+
+                                                                        
+                                                                        {% endfor %} 
+                                                                        {% else %}
+                                                                        ----
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+
+
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Certificate of Incorporation</label>
+
+                                                                    <div class="col-md-9">
+                                                                        {% if i.contract_inco.all %}{% for j in i.contract_inco.all %}
+
+
+
+
+                                                                        <a href='{{j.certi_file}}' download  class="col-md-12">Download</a>
+
+                                                                        </div>
+                                                                        
+                                                                        
+
+
+
+                                                                        
+                                                                        {% endfor %} 
+                                                                        {% else %}
+                                                                        ----
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+
+ 
+
+
+<div class="row">
+                                                            <!--/span-->
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label class="control-label col-md-3">Company Profile</label>
+
+                                                                    <div class="col-md-9">
+                                                                        {% if i.contract_prof.all %}{% for j in i.contract_prof.all %}
+
+                                                                         <a href='{{j.company_profile_file}}' download  class="col-md-12">Download</a>                                                
+                                                                        
+                                                                        {% endfor %} 
+                                                                        {% else %}
+                                                                        ----
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--/span-->
+                                                        </div>
 
 
 
