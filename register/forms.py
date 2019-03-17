@@ -92,7 +92,7 @@ class ContractorModelForm(ModelForm):
         exclude = ('user','submission_date')
 
     def __init__(self, *args, **kwargs):
-        super(ContractorModelForm, self).__init__(*args, **kwargs)       
+        super(ContractorModelForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -103,7 +103,7 @@ class PhoneNumberForm(ModelForm):
         fields = ['phonenumber']
 
     def __init__(self, *args, **kwargs):
-        super(PhoneNumberForm, self).__init__(*args, **kwargs)       
+        super(PhoneNumberForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -113,7 +113,7 @@ class EmailForm(ModelForm):
         fields = ['email']
 
     def __init__(self, *args, **kwargs):
-        super(EmailForm, self).__init__(*args, **kwargs)       
+        super(EmailForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -123,7 +123,7 @@ class WebsiteForm(ModelForm):
         fields = ['website']
 
     def __init__(self, *args, **kwargs):
-        super(WebsiteForm, self).__init__(*args, **kwargs)       
+        super(WebsiteForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -133,7 +133,7 @@ class RegisteredOfficeForm(ModelForm):
         fields = ['address']
 
     def __init__(self, *args, **kwargs):
-        super(RegisteredOfficeForm, self).__init__(*args, **kwargs)       
+        super(RegisteredOfficeForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -143,7 +143,7 @@ class PrincipalOwnerForm(ModelForm):
         fields = ['partner']
 
     def __init__(self, *args, **kwargs):
-        super(PrincipalOwnerForm, self).__init__(*args, **kwargs)       
+        super(PrincipalOwnerForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -153,7 +153,7 @@ class DirectorDetailsForm(ModelForm):
         fields = ['dir_name','dir_nationality']
 
     def __init__(self, *args, **kwargs):
-        super(DirectorDetailsForm, self).__init__(*args, **kwargs)       
+        super(DirectorDetailsForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -163,7 +163,7 @@ class WorkPerformanceDetailsForm(ModelForm):
         fields = ['client_exectn_date','location','total_value_contract','client_contact_person','job_compltn_certificate']
 
     def __init__(self, *args, **kwargs):
-        super(WorkPerformanceDetailsForm, self).__init__(*args, **kwargs)       
+        super(WorkPerformanceDetailsForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -173,7 +173,7 @@ class ContactPersonDetailsForm(ModelForm):
         fields = ['name','email','phone','designation']
 
     def __init__(self, *args, **kwargs):
-        super(ContactPersonDetailsForm, self).__init__(*args, **kwargs)       
+        super(ContactPersonDetailsForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -183,7 +183,7 @@ class CertificateIncorporationForm(ModelForm):
         fields = ['certi_file']
 
     def __init__(self, *args, **kwargs):
-        super(CertificateIncorporationForm, self).__init__(*args, **kwargs)       
+        super(CertificateIncorporationForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -193,7 +193,7 @@ class CompanyProfileFileForm(ModelForm):
         fields = ['company_profile_file']
 
     def __init__(self, *args, **kwargs):
-        super(CompanyProfileFileForm, self).__init__(*args, **kwargs)       
+        super(CompanyProfileFileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -203,7 +203,7 @@ class OrganizationChartForm(ModelForm):
         fields = ['orgnztn_chart_file']
 
     def __init__(self, *args, **kwargs):
-        super(OrganizationChartForm, self).__init__(*args, **kwargs)       
+        super(OrganizationChartForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -213,7 +213,7 @@ class PastProjectsForm(ModelForm):
         fields = ['pjt_file']
 
     def __init__(self, *args, **kwargs):
-        super(PastProjectsForm, self).__init__(*args, **kwargs)       
+        super(PastProjectsForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -223,7 +223,7 @@ class FormCO2Form(ModelForm):
         fields = ['co2_file']
 
     def __init__(self, *args, **kwargs):
-        super(FormCO2Form, self).__init__(*args, **kwargs)       
+        super(FormCO2Form, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -233,7 +233,7 @@ class FormCO7Form(ModelForm):
         fields = ['co7_file']
 
     def __init__(self, *args, **kwargs):
-        super(FormCO7Form, self).__init__(*args, **kwargs)       
+        super(FormCO7Form, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -243,7 +243,7 @@ class FormCO10Form(ModelForm):
         fields = ['c010_file']
 
     def __init__(self, *args, **kwargs):
-        super(FormCO10Form, self).__init__(*args, **kwargs)       
+        super(FormCO10Form, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -253,7 +253,7 @@ class DPRCertificateForm(ModelForm):
         fields = ['dpr_certi']
 
     def __init__(self, *args, **kwargs):
-        super(DPRCertificateForm, self).__init__(*args, **kwargs)       
+        super(DPRCertificateForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -263,7 +263,7 @@ class AuditAccountForm(ModelForm):
         fields = ['acc_file']
 
     def __init__(self, *args, **kwargs):
-        super(AuditAccountForm, self).__init__(*args, **kwargs)       
+        super(AuditAccountForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -273,7 +273,7 @@ class VATCertificateForm(ModelForm):
         fields = ['certificate']
 
     def __init__(self, *args, **kwargs):
-        super(VATCertificateForm, self).__init__(*args, **kwargs)       
+        super(VATCertificateForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -283,7 +283,7 @@ class CompanyTaxForm(ModelForm):
         fields = ['tax_certifct']
 
     def __init__(self, *args, **kwargs):
-        super(CompanyTaxForm, self).__init__(*args, **kwargs)       
+        super(CompanyTaxForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -293,7 +293,7 @@ class WCICForm(ModelForm):
         fields = ['wcic_file']
 
     def __init__(self, *args, **kwargs):
-        super(WCICForm, self).__init__(*args, **kwargs)       
+        super(WCICForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -303,7 +303,7 @@ class RefLetterForm(ModelForm):
         fields = ['ref_file']
 
     def __init__(self, *args, **kwargs):
-        super(RefLetterForm, self).__init__(*args, **kwargs)       
+        super(RefLetterForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -313,7 +313,7 @@ class NPLAppForm(ModelForm):
         fields = ['npl']
 
     def __init__(self, *args, **kwargs):
-        super(NPLAppForm, self).__init__(*args, **kwargs)       
+        super(NPLAppForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -323,7 +323,7 @@ class CurrentITFForm(ModelForm):
         fields = ['citf']
 
     def __init__(self, *args, **kwargs):
-        super(CurrentITFForm, self).__init__(*args, **kwargs)       
+        super(CurrentITFForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -334,7 +334,7 @@ class CompanyProfileForm(ModelForm):
         fields = ['duration','no_of_staff','associated_status','associated_company','documents','machinary_plants_status','subsidiary_status']
 
     def __init__(self, *args, **kwargs):
-        super(CompanyProfileForm, self).__init__(*args, **kwargs)       
+        super(CompanyProfileForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -346,7 +346,7 @@ class HealthSafetyForm(ModelForm):
         fields = ['cert']
 
     def __init__(self, *args, **kwargs):
-        super(HealthSafetyForm, self).__init__(*args, **kwargs)       
+        super(HealthSafetyForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -356,7 +356,7 @@ class HealthPolicyForm(ModelForm):
         fields = ['policy']
 
     def __init__(self, *args, **kwargs):
-        super(HealthPolicyForm, self).__init__(*args, **kwargs)       
+        super(HealthPolicyForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -366,7 +366,7 @@ class OtherDocForm(ModelForm):
         fields = ['doc']
 
     def __init__(self, *args, **kwargs):
-        super(OtherDocForm, self).__init__(*args, **kwargs)       
+        super(OtherDocForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 
@@ -378,7 +378,7 @@ class QMSForm(ModelForm):
         fields = ['iso_file']
 
     def __init__(self, *args, **kwargs):
-        super(QMSForm, self).__init__(*args, **kwargs)       
+        super(QMSForm, self).__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control input-sm'
 

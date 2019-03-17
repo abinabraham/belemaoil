@@ -58,8 +58,7 @@ class RehabCivil(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class RehabMech(models.Model):
 
@@ -67,8 +66,7 @@ class RehabMech(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class RehabElectr(models.Model):
 
@@ -76,8 +74,7 @@ class RehabElectr(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class GeneralSupplies(models.Model):
 
@@ -85,8 +82,7 @@ class GeneralSupplies(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class HeatingCoolingProd(models.Model):
 
@@ -94,8 +90,7 @@ class HeatingCoolingProd(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class SafetyLabChem(models.Model):
 
@@ -103,8 +98,7 @@ class SafetyLabChem(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 
 class MechanicalParts(models.Model):
@@ -113,8 +107,7 @@ class MechanicalParts(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class Consultancy(models.Model):
 
@@ -122,8 +115,7 @@ class Consultancy(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class WaterBoreHole(models.Model):
 
@@ -131,8 +123,7 @@ class WaterBoreHole(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class ProtocolLogistics(models.Model):
 
@@ -140,8 +131,7 @@ class ProtocolLogistics(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class Laboratory(models.Model):
 
@@ -149,8 +139,7 @@ class Laboratory(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
+
 
 class OnshoreEnv(models.Model):
 
@@ -158,9 +147,130 @@ class OnshoreEnv(models.Model):
 
   def __unicode__(self):
           return "%s" % self.name
-  class Meta:
-    ordering = ['name']
 
+
+class InstllMaintModel(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+class AviationSupport(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class Survey(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+
+class IntegrityTest(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+class Calibration(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class Haulage(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class MediPharma(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+
+class Hospitality(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class Printing(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+class Automob(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+class DataMeasur(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class OffshorPipe(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+
+class OnshorPipe(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+
+class FacilityMaint(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class DisciplineEng(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
+
+class InstallationUpgrade(models.Model):
+
+  name = models.CharField(default='',max_length=100)
+
+  def __unicode__(self):
+          return "%s" % self.name
 
 class MajorCategory(models.Model):
 
@@ -177,6 +287,22 @@ class MajorCategory(models.Model):
     protologi = models.ManyToManyField(ProtocolLogistics,null=True, blank= True)
     lab = models.ManyToManyField(Laboratory,null=True, blank= True)
     onshore = models.ManyToManyField(OnshoreEnv,null=True, blank= True)
+    install = models.ManyToManyField(InstllMaintModel,null=True, blank= True)
+    aviation = models.ManyToManyField(AviationSupport,null=True, blank= True)
+    survey = models.ManyToManyField(Survey,null=True, blank= True)
+    intetest = models.ManyToManyField(IntegrityTest,null=True, blank= True)
+    calib = models.ManyToManyField(Calibration,null=True, blank= True)
+    haul = models.ManyToManyField(Haulage,null=True, blank= True)
+    medphr = models.ManyToManyField(MediPharma,null=True, blank= True)
+    hosp = models.ManyToManyField(Hospitality,null=True, blank= True)
+    printi = models.ManyToManyField(Printing,null=True, blank= True)
+    automob = models.ManyToManyField(Automob,null=True, blank= True)
+    datam = models.ManyToManyField(DataMeasur,null=True, blank= True)
+    offshor = models.ManyToManyField(OffshorPipe,null=True, blank= True)
+    onshor = models.ManyToManyField(OnshorPipe,null=True, blank= True)
+    facil = models.ManyToManyField(FacilityMaint,null=True, blank= True)
+    disc = models.ManyToManyField(DisciplineEng ,null=True, blank= True)
+    installs = models.ManyToManyField( InstallationUpgrade,null=True, blank= True)
 
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)

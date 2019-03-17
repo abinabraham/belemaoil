@@ -22,8 +22,7 @@ class GeneralPurposeForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(GeneralPurposeForm, self).__init__(*args, **kwargs)       
-        for field in self.fields:
-            self.fields[field].widget.attrs['class']='form-control input-sm'
+
 
 class MajorCategoryForm(ModelForm):
     
@@ -54,16 +53,60 @@ class MajorCategoryForm(ModelForm):
     onshore =  forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,label=_("OnshoreEnv"),
                                     choices=[(item.pk, item) for item in OnshoreEnv.objects.all()])
 
-     
-    
+    install = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("install"),
+                                        choices=[(item.pk, item) for item in InstllMaintModel.objects.all()])
+    aviation = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("aviation"),
+                                        choices=[(item.pk, item) for item in AviationSupport.objects.all()])
+
+    survey = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("survey"),
+                                        choices=[(item.pk, item) for item in Survey.objects.all()])
+
+    intetest = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("intetest"),
+                                       choices=[(item.pk, item) for item in IntegrityTest.objects.all()])
+
+    calib = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("calib"),
+                                         choices=[(item.pk, item) for item in Calibration.objects.all()])
+
+    haul = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("haul"),
+                                      choices=[(item.pk, item) for item in Haulage.objects.all()])
+
+    medphr = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("medphr"),
+                                     choices=[(item.pk, item) for item in MediPharma.objects.all()])
+
+    hosp = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("hosp"),
+                                       choices=[(item.pk, item) for item in Hospitality.objects.all()])
+
+    printi = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("printi"),
+                                     choices=[(item.pk, item) for item in Printing.objects.all()])
+
+    automob = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("automob"),
+                                       choices=[(item.pk, item) for item in Automob.objects.all()])
+    datam = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("datam"),
+                                        choices=[(item.pk, item) for item in DataMeasur.objects.all()])
+
+    offshor = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("offshor"),
+                                        choices=[(item.pk, item) for item in OffshorPipe.objects.all()])
+
+    onshor = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("onshor"),
+                                        choices=[(item.pk, item) for item in OnshorPipe.objects.all()])
+
+    facil = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("facil"),
+                                       choices=[(item.pk, item) for item in FacilityMaint.objects.all()])
+    installs = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("installs"),
+                                       choices=[(item.pk, item) for item in InstallationUpgrade.objects.all()])
+
+    disc = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, label=_("disc"),
+                                        choices=[(item.pk, item) for item in DisciplineEng.objects.all()])
+
+
+
+
     class Meta:
         model = MajorCategory
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
-        super(MajorCategoryForm, self).__init__(*args, **kwargs)       
-        for field in self.fields:
-            self.fields[field].widget.attrs['class']='form-control input-sm'
+        super(MajorCategoryForm, self).__init__(*args, **kwargs)
 
 
 

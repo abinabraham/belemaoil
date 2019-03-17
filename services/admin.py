@@ -14,7 +14,9 @@ admin.site.register(Supply)
 admin.site.register(GeneralPurpose)
 
 models = [RehabCivil, RehabMech ,RehabElectr ,GeneralSupplies ,HeatingCoolingProd, SafetyLabChem, MechanicalParts, \
-Consultancy, WaterBoreHole, ProtocolLogistics, Laboratory ,OnshoreEnv, MajorCategory]
+Consultancy, WaterBoreHole, ProtocolLogistics, Laboratory ,OnshoreEnv, MajorCategory, InstllMaintModel, \
+		  Survey, AviationSupport, IntegrityTest, Calibration, Haulage, MediPharma, Hospitality,Printing,Automob, DataMeasur, \
+		  OffshorPipe, OnshorPipe, FacilityMaint, InstallationUpgrade, DisciplineEng]
 
 for model in models:
 	admin.site.register(model)
